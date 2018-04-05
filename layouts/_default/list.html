@@ -1,0 +1,34 @@
+{{ define "main" }}
+
+{{if not .IsHome }}
+<h1>{{ .Title }}</h1>
+{{ end }}
+
+{{if .Content }}{{/* --- Display page content, if any --- */}}
+<div class="content">{{ .Content }}</div>
+{{end}}
+
+{{/* --- List section content for the current section --- */}}
+
+    {{ range (where .Data.Pages "Section" "!=" "") }}
+    <div class="">
+        <span class="date">{{ .Date.Format "2006-01-02" }}</span>
+        <a href="{{ .Permalink }}">{{ .Title | default .URL }}</a>
+        <p>{{ .Description | default .Summary }}</p>
+    </div>
+    {{ end }}
+
+
+<div class="">
+    {{ $paginator := .Paginate (where .Data.Pages "Section" .Section) }}
+    <section class="">
+        {{ range  $paginator.Pages }}
+        <div class="">
+            {{/* partial "summary.html" . */}}
+        </div>
+        {{ end }}
+    </section>
+    {{ template "_internal/pagination.html" . }}
+</div>
+
+{{ end }}

@@ -1,0 +1,93 @@
+<h2><a href="https://gohugo.io/variables/page/">Page Variables</a></h2>
+<dl>
+    <dt>.Page.Title:</dt><dd>{{ .Page.Title }}</dt>
+    <dt>.Page.Kind:</dt><dd>{{ .Page.Kind }}</dd>
+    <dt>.Page.Type:</dt><dd>{{ .Page.Type }}</dd>
+    <dt>.Page.Layout:</dt><dd>{{ .Page.Layout }}</dd>
+    <dt>.Page.FuzzyWordCount:</dt><dd>{{ .Page.FuzzyWordCount }}</dd>
+    <dt>.Page.Date:</dt><dd>{{ .Page.Date }}</dd>
+    <dt>.Page.Lastmod:</dt><dd>{{ .Page.Lastmod }}</dd>
+    <dt>.Page.Permalink:</dt><dd>{{ .Page.Permalink }}</dd>
+    <dt>.Page.URL:</dt><dd>{{ .Page.URL }}</dd>
+</dl>
+
+<h2>Site Variables</h2>
+<dl>
+    <dt>.Site.Author:</dt><dd>{{ .Site.Author }}</dd>
+    <dt>.Site.BaseURL:</dt><dd>{{ .Site.BaseURL }}</dd>
+    <dt>.Site.BuildDrafts:</dt><dd>{{ .Site.BuildDrafts }}</dd>
+    <dt>.Site.Copyright:</dt><dd>{{ .Site.Copyright }}</dd>
+    <dt>.Site.DisqusShortname:</dt><dd>{{ .Site.DisqusShortname }}</dd>
+    <dt>.Site.GoogleAnalytics:</dt><dd>{{ .Site.GoogleAnalytics }}</dd>
+    <dt>.Site.IsMultiLingual:</dt><dd>{{ .Site.IsMultiLingual }}</dd>
+    <dt>.Site.IsServer:</dt><dd>{{ .Site.IsServer }}</dd>
+    <dt>.Site.LastChange:</dt><dd>{{ .Site.LastChange }}</dd>
+    <dt>.Site.RSSLink:</dt><dd>{{ .Site.RSSLink }}</dd>
+    <dt>.Site.Taxonomies:</dt><dd>
+        <ul>
+            {{ range $taxonomyname, $taxonomy := .Site.Taxonomies }}
+            <li><a href="{{ "/" | relLangURL}}{{ $taxonomyname | urlize }}">{{ $taxonomyname }}</a></li>
+            {{end}}
+        </ul>
+    </dd>
+    <dt>.Site.Title:</dt><dd>{{ .Site.Title }}</dd>
+</dl>
+
+{{/*}}
+<h2><a href="https://gohugo.io/variables/files/">File Variables</a></h2>
+<dl>
+    <dt>.File.Path:</dt><dd>{{ .File.Path }}</dd>
+    <dt>.File.LogicalName:</dt><dd>{{ .File.LogicalName }}</dd>
+    <dt>.File.TranslationBaseName:</dt><dd>{{ .File.TranslationBaseName }}</dd>
+    <dt>.File.BaseFileName:</dt><dd>{{ .File.BaseFileName }}</dd>
+    <dt>.File.Ext:</dt><dd>{{ .File.Ext }}</dd>
+    <dt>.File.Lang:</dt><dd>{{ .File.Lang }}</dd>
+    <dt>.File.Dir:</dt><dd>{{ .File.Dir }}</dd>
+</dl>
+*/}}
+
+<h2><a href="https://gohugo.io/variables/hugo/">Hugo Variables</a></h2>
+<dl>
+    <dt>.Page.Hugo.Version:</dt><dd>{{ .Page.Hugo.Version }}</dd>
+    <dt>.Page.Hugo.BuildDate:</dt><dd>{{ .Page.Hugo.BuildDate }}</dd>
+    <dt>.Page.Hugo.CommitHash:</dt><dd>{{ .Page.Hugo.CommitHash }}</dd>
+</dl>
+
+<h2>All Taxonomies</h2>
+<section>
+  <ul id="all-taxonomies">
+    {{ range $taxonomyname, $taxonomy := .Site.Taxonomies }}
+      <li><a href="{{ "/" | relLangURL}}{{ $taxonomyname | urlize }}">{{ $taxonomyname }}</a>
+        <ul>
+          {{ range $key, $value := $taxonomy }}
+          <li><a href="{{ "/" | relLangURL}}{{ $taxonomyname | urlize }}/{{ $key | urlize }}">{{ $key }}</a></li>
+                <ul>
+                {{ range $value.Pages }}
+                    <li hugo-nav="{{ .RelPermalink}}"><a href="{{ .Permalink}}"> {{ .LinkTitle }} </a> </li>
+                {{ end }}
+                </ul>
+          {{ end }}
+        </ul>
+      </li>
+    {{ end }}
+  </ul>
+</section>
+
+<h2>Page Meta</h2>
+{{ printf "%#v" .Page }}
+{{ printf "%#v" .Page.Params }}
+{{ printf "%#v" . }}
+
+<h2>Debug Site.Menus (printf)</h2>
+<div>{{ printf "%#v" $.Site.Menus }}</div>
+<div>{{ printf "%#v" $.Site.Menus.main }}</div>
+<div>{{ printf "%#v" $.Site.Menus.sitenav }}</div>
+{{ range .Site.Menus.sitenav }}
+    {{ .Name }}
+{{ end }}
+
+<h2>Debug Page (printf)</h2>
+<div>{{ printf "%#v" $.Page }}</div>
+
+<h2>Debug Site (printf)</h2>
+<div>{{ printf "%#v" $.Site }}</div>

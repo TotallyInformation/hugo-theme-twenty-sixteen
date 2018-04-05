@@ -1,0 +1,46 @@
+{{ define "main" }}
+
+<article class="content">
+    <header>
+        <h2 class="">
+            {{ .Title | markdownify }}
+        </h2>
+        {{ partial "meta-date.html" . }}
+    </header>
+
+    {{- if .Params.Description }}
+    <div class="" title="Page description"><blockquote>
+        {{ .Params.Description | markdownify }}
+    </blockquote></div>
+    {{end}}
+
+    {{- if .Content }}
+    <div>
+        {{ .Content }}
+    </div>
+    {{end}}
+    
+    {{- if .IsTranslated }}
+    <h4>{{ i18n "translations" }}</h4>
+    <ul>
+        {{ range .Translations }}
+        <li>
+            <a href="{{ .Permalink }}">{{ .Lang }}: {{ .Title }}{{ if .IsPage }}{{ end }}</a>
+        </li>
+        {{ end }}
+    </ul>
+    {{ end }}
+    
+    {{- if or (ne ($.Param "sharingicons") false) (.Site.DisqusShortname) }}
+    <hr>
+    <footer>
+
+        {{ if (ne ($.Param "sharingicons") false) }} {{ partial "sharing-icons.html" . }} {{ end }} {{ if and (.Site.DisqusShortname) (ne .Params.comments false) }}
+        {{ template "_internal/disqus.html" . }} {{ end }}
+    </footer>
+    {{ end }}
+
+</article>
+<!-- /.blog-post -->
+
+{{ end }}

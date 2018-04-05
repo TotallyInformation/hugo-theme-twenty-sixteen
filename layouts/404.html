@@ -1,0 +1,19 @@
+{{ define "main" }}
+
+<article class="blog-post">
+    <header>
+        <h2 class="blog-post-title">Page Not Found</h2>
+    </header>
+    <p>
+        Sorry, that page was not found.
+    </p>
+    <p>
+        If the link ends with ".html", you might like to try again without that in case the URL's have changed.
+    </p>
+    <p>
+        Go back
+        <a href="{{ "/" | relURL }}">home</a>.
+    </p>
+</article>
+
+{{ end }}
