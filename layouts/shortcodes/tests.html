@@ -11,27 +11,7 @@
     <dt>.Page.URL:</dt><dd>{{ .Page.URL }}</dd>
 </dl>
 
-<h2>Site Variables</h2>
-<dl>
-    <dt>.Site.Author:</dt><dd>{{ .Site.Author }}</dd>
-    <dt>.Site.BaseURL:</dt><dd>{{ .Site.BaseURL }}</dd>
-    <dt>.Site.BuildDrafts:</dt><dd>{{ .Site.BuildDrafts }}</dd>
-    <dt>.Site.Copyright:</dt><dd>{{ .Site.Copyright }}</dd>
-    <dt>.Site.DisqusShortname:</dt><dd>{{ .Site.DisqusShortname }}</dd>
-    <dt>.Site.GoogleAnalytics:</dt><dd>{{ .Site.GoogleAnalytics }}</dd>
-    <dt>.Site.IsMultiLingual:</dt><dd>{{ .Site.IsMultiLingual }}</dd>
-    <dt>.Site.IsServer:</dt><dd>{{ .Site.IsServer }}</dd>
-    <dt>.Site.LastChange:</dt><dd>{{ .Site.LastChange }}</dd>
-    <dt>.Site.RSSLink:</dt><dd>{{ .Site.RSSLink }}</dd>
-    <dt>.Site.Taxonomies:</dt><dd>
-        <ul>
-            {{ range $taxonomyname, $taxonomy := .Site.Taxonomies }}
-            <li><a href="{{ "/" | relLangURL}}{{ $taxonomyname | urlize }}">{{ $taxonomyname }}</a></li>
-            {{end}}
-        </ul>
-    </dd>
-    <dt>.Site.Title:</dt><dd>{{ .Site.Title }}</dd>
-</dl>
+{{ partial "debug-site-vars.html" . }}
 
 {{/*}}
 <h2><a href="https://gohugo.io/variables/files/">File Variables</a></h2>

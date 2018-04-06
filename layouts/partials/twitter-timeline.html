@@ -1,0 +1,19 @@
+{{/* Show a twitter timeline */}}
+{{- if $.Site.Params.twitterUser }}
+{{ $u := $.Site.Params.twitterUser }}
+{{ $n := $.Site.Params.twitterPosts | default 5 }}
+{{ $t := $.Site.Params.twitterTheme | default "dark" }}
+{{ $c := $.Site.Params.twitterChrome | default "nofooter noborders" }}
+<div>
+    <a class="twitter-timeline" 
+        data-theme="{{ $t }}" data-tweet-limit="{{ $n }}" 
+        {{ if $.Site.Params.twitterWidth }}data-width="{{ $.Site.Params.twitterWidth }}"{{end}}
+        {{ if $.Site.Params.twitterHeight }}data-height="{{ $.Site.Params.twitterHeight }}"{{end}}
+        data-chrome="$c" 
+        href="https://twitter.com/{{ $u }}?ref_src=twsrc%5Etfw"
+    >
+        Tweets by @{{ $u }}
+    </a>
+</div>
+<script defer async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+{{end}}

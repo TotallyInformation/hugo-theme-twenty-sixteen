@@ -2,10 +2,10 @@
 # See https://github.com/gohugoio/hugoThemes#themetoml for an example
 
 name = "Twenty Sixteen"
-license = "MIT"
-licenselink = "https://github.com/yourname/yourtheme/blob/master/LICENSE.md"
+license = "Apache 2.0"
+licenselink = "https://github.com/TotallyInformation/hugo-theme-twenty-sixteen/blob/master/LICENSE"
 description = ""
-homepage = "http://example.com/"
+homepage = "https://github.com/TotallyInformation/hugo-theme-twenty-sixteen"
 tags = []
 features = []
 min_version = "0.38"
@@ -14,8 +14,28 @@ min_version = "0.38"
   name = "Julian Knight"
   homepage = ""
 
-# If porting an existing theme
-[original]
-  name = ""
-  homepage = ""
-  repo = ""
+[params]
+    # If false, all of blog post will appear on front page (and in pagination)
+    truncate = true
+
+    # --- TwentySixteen Theme Parameters --- #
+    # What elements to exclude from the navigation menu?
+    menuExclude = ["Posts", "Pages"]
+
+    # Sidebar: /layouts/partials/site-sidebar.html
+    sidebarSide = "right" # left/right or comment out to disable sidebar
+    sidebarWidth = 3      # Width as # of logical columns (n/12 ths), default = 3
+
+    # Do we want social sharing icons showing? Default false
+    # sharingicons = true
+
+    # Twitter User - if set will show Twitter timeline in sidebar
+    # twitterUser = "TotallyInformation"
+    # Number of recent posts to show (defaults to 5)
+    twitterPosts = 5
+    # Width & height in pixels (defaults to the width of the sidebar, expands to height of tweet list)
+    # twitterWidth = 220
+    # twitterHeight = 600
+    # Twitter widget theme (See https://dev.twitter.com/web/embedded-timelines )
+    twitterTheme = "dark" # dark/light/transparent, default dark
+    

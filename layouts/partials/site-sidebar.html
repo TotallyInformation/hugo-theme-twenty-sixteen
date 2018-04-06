@@ -1,6 +1,21 @@
-<div class="column is-2 section">
-    {{ block "sidebar" . }}
-    <a class="twitter-timeline" data-width="220" data-height="600" data-theme="dark" href="https://twitter.com/knightnet?ref_src=twsrc%5Etfw">Tweets by knightnet</a>
-    <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+{{ $sbWidth := $.Site.Params.sidebarWidth | default 3 }}
+{{- if $.Site.Params.sidebarSide }}
+<div class="column is-{{ $sbWidth }} section">
+    {{ block "sidebar-top" . }}{{end}}
+    <div>
+        <a href="https://stackexchange.com/users/1375993/julian-knight">
+            <img src="https://stackexchange.com/users/flair/1375993.png" width="208" height="58" 
+                alt="profile for Julian Knight on Stack Exchange, a network of free, community-driven Q&amp;A sites" 
+                title="profile for Julian Knight on Stack Exchange, a network of free, community-driven Q&amp;A sites" />
+        </a>
+    </div>
+    {{- if $.Site.Params.twitterUser }}
+    {{ partial "twitter-timeline.html" . }}
+    {{end}}
+    {{ block "sidebar-bottom" . }}
+    <div>
+        <a href="http://www.techdirt.com/netdeclaration"><img src="http://cdn.techdirt.com/i/net-declaration.png" title="Declaration of Internet Freedom" /></a>
+    </div>
     {{end}}
 </div>
+{{end}}

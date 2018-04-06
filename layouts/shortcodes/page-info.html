@@ -1,0 +1,70 @@
+<h2><a href="https://gohugo.io/variables/page/">Page Variables</a></h2>
+<dl>
+    <dt>.Page.Title:</dt><dd>{{ .Page.Title }}</dt>
+    <dt>.Page.Kind:</dt><dd>{{ .Page.Kind }}</dd>
+    <dt>.Page.Type:</dt><dd>{{ .Page.Type }}</dd>
+    <dt>.Page.Layout:</dt><dd>{{ .Page.Layout }}</dd>
+    <dt>.Page.FuzzyWordCount:</dt><dd>{{ .Page.FuzzyWordCount }}</dd>
+    <dt>.Page.Date:</dt><dd>{{ .Page.Date }}</dd>
+    <dt>.Page.Lastmod:</dt><dd>{{ .Page.Lastmod }}</dd>
+    <dt>.Page.Permalink:</dt><dd>{{ .Page.Permalink }}</dd>
+    <dt>.Page.URL:</dt><dd>{{ .Page.URL }}</dd>
+</dl>
+
+<h2>Page Meta</h2>
+{{ printf "%#v" .Page }}
+{{ printf "%#v" .Page.Params }}
+{{ printf "%#v" . }}
+
+<script>
+    var mytxt = '{{ printf "%#v" .Page | safeHTML }}'.
+        replace(/\\\\n/g,'').replace(/\\x22/g,'"').replace(/\\x23/g,'{').
+        replace(/\(\*hugolib\..*?\)/g,'').
+        replace(/\(\*helpers\..*?\)/g,'').
+        replace(/\&hugolib\.Page/g,'').
+        replace(/hugolib\.pages/g,'').
+        replace(/hugolib\.Pages/g,'').
+        replace(/hugolib\.Sitemap/g,'').
+        replace(/hugolib\.Source/g,'').
+        replace(/hugolib\.PageMeta/g,'').
+        replace(/hugolib\.Position/g,'').
+        replace(/hugolib\.PageMenus/g,'').
+        replace(/output\.layoutDescriptor/g,'').
+        replace(/output\.Format/g,'outputFormat:').
+        replace(/outputFormats:output\.Format\:/g,'outputFormats:').
+        replace(/resource\.Resources/g,'').
+        replace(/pagemeta\.URLPath/g,'').
+        replace(/pagemeta\.PageDates/g,'').
+        replace(/\(\*gitmap\.GitInfo\)/g,'').
+        replace(/time\.Time/g,'').
+        replace(/\(\*time\.Location\)/g,'').
+        replace(/media\.Type/g,'').
+        replace(/\((0x.*?)\)/g,'"$1"').
+        replace(/\[\]uint8\(nil\)/g,'[]').
+        replace(/\[\]uint8\{/g,'{').
+        replace(/\[\]string\(nil\)/g,'[]').
+        replace(/\[\]string\{(.*?)\}/g,'$1').
+        replace(/\[\]map\[string\]interface/g,'').
+        replace(/map\[string\]interface/g,'').
+        replace(/\[\]hugolib\.Image\(nil\)/g,'[]').
+        replace(/\[\]hugolib\.Video\(nil\)/g,'[]').
+        replace(/\(nil\)/g, 'null').
+        replace(/frontmatter\:\{(.*)\}/g, 'frontmatter: [$1]').
+        replace(/\{\}\{(.*?)\}{/g, '{$1}').
+        replace(/\,\s*\{(.*?)\}{/g, 'SOMETHING: {$1}').
+        replace(/\{\}null/g, 'null')
+    mytxt = mytxt + '}'
+    mytxt = mytxt.replace(/\{(.*?)\}/g, "{\n\t$1\n}")
+
+    console.dir( mytxt )
+    try{
+        console.dir( eval(mytxt) )
+    } catch(e) {
+        console.dir(e)
+    }
+    try{
+        console.dir( JSON.parse( mytxt ) )
+    } catch(e) {
+        console.dir(e)
+    }
+</script>

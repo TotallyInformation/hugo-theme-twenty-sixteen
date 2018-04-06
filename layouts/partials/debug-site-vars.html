@@ -1,0 +1,36 @@
+<h2>Twenty Sixteen Theme Site Variables</h2>
+<dl>
+    <dt>.Site.Params.description:</dt><dd>{{ .Site.Params.description }}</dd>
+    <dt>.Site.Params.truncate:</dt><dd>{{ .Site.Params.truncate }}</dd>
+    <dt>.Site.Params.author:</dt><dd>{{ .Site.Params.author }}</dd>
+    <dt>.Site.Params.googleAnalytics:</dt><dd>{{ .Site.Params.googleAnalytics }}</dd>
+    <dt>.Site.Params.menuExclude:</dt><dd>{{ .Site.Params.menuExclude }}</dd>
+    <dt>.Site.Params.sidebarSide:</dt><dd>{{ .Site.Params.sidebarSide }}</dd>
+    <dt>.Site.Params.sidebarWidth:</dt><dd>{{ .Site.Params.sidebarWidth }}</dd>
+    <dt>.Site.Params.sharingicons:</dt><dd>{{ .Site.Params.sharingicons }}</dd>
+    <dt>.Site.Params.twitterUser:</dt><dd>{{ .Site.Params.twitterUser }}</dd>
+    <dt>.Site.Params.twitterPosts:</dt><dd>{{ .Site.Params.twitterPosts }}</dd>
+    <dt>.Site.Params.twitterWidth:</dt><dd>{{ .Site.Params.twitterWidth }}</dd>
+    <dt>.Site.Params.twitterHeight:</dt><dd>{{ .Site.Params.twitterHeight }}</dd>
+</dl>
+<h2>Site Variables</h2>
+<dl>
+    <dt>.Site.Author:</dt><dd>{{ .Site.Author }}</dd>
+    <dt>.Site.BaseURL:</dt><dd>{{ .Site.BaseURL }}</dd>
+    <dt>.Site.BuildDrafts:</dt><dd>{{ .Site.BuildDrafts }}</dd>
+    <dt>.Site.Copyright:</dt><dd>{{ .Site.Copyright }}</dd>
+    <dt>.Site.DisqusShortname:</dt><dd>{{ .Site.DisqusShortname }}</dd>
+    <dt>.Site.GoogleAnalytics:</dt><dd>{{ .Site.GoogleAnalytics }}</dd>
+    <dt>.Site.IsMultiLingual:</dt><dd>{{ .Site.IsMultiLingual }}</dd>
+    <dt>.Site.IsServer:</dt><dd>{{ .Site.IsServer }}</dd>
+    <dt>.Site.LastChange:</dt><dd>{{ .Site.LastChange }}</dd>
+    <dt>.Site.RSSLink:</dt><dd>{{ .Site.RSSLink }}</dd>
+    <dt>.Site.Taxonomies:</dt><dd>
+        <ul>
+            {{ range $taxonomyname, $taxonomy := .Site.Taxonomies }}
+            <li><a href="{{ "/" | relLangURL}}{{ $taxonomyname | urlize }}">{{ $taxonomyname }}</a></li>
+            {{end}}
+        </ul>
+    </dd>
+    <dt>.Site.Title:</dt><dd>{{ .Site.Title }}</dd>
+</dl>
