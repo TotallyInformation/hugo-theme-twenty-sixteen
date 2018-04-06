@@ -14,12 +14,13 @@
     <div class="">
         <span class="date">{{ .Date.Format "2006-01-02" }}</span>
         <a href="{{ .Permalink }}">{{ .Title | default .URL }}</a>
-        <p>{{ .Description | default .Summary }}</p>
+        <div>{{ .Description | default .Summary }}</div>
     </div>
     {{ end }}
 
 
 <div class="">
+    {{/* NB: .Data.Pages auto-filters to the "current" content level */}}
     {{ $paginator := .Paginate (where .Data.Pages "Section" .Section) }}
     <section class="">
         {{ range  $paginator.Pages }}
