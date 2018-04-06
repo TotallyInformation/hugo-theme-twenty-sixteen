@@ -1,0 +1,12 @@
+{{/* Lists all the pages in the current context for .Data.Pages */}}
+<div title="debug-data-pages.html"><hr><h2>.Data.Pages</h2><table>
+    <thead><tr><th>#</th><th>Section</th><th>Type</th><th>Name</th></tr></thead><tbody>
+    {{ range $idx, $pg := .Data.Pages }}
+    <tr>
+        <td>{{$idx}}</td><td>{{$pg.Section}}</td><td>{{$pg.Type}}</td>
+        <td>
+            <a href="{{$pg.Slug}}" title="">{{ if ne $pg.Name "" }}{{$pg.Name}}{{else}}<i>{{$pg.URL}}{{end}}</i></a>
+        </td>
+    </tr>
+    {{end}}
+</tbody></table><hr></div>

@@ -1,0 +1,32 @@
+<h2>Page Author</h2>
+<p>{{ .Page.Author }}</p>
+
+<h2>All Site Authors</h2>
+<div>
+  <ul id="all-authors">
+    {{ range $authorname, $author := .Site.Authors }}
+      <li>{{ $authorname }}
+        <ul>
+          {{ range $key, $value := $author }}
+          <li>{{ $key }}</li>
+          {{ end }}
+        </ul>
+      </li>
+    {{ end }}
+  </ul>
+</div>
+
+<h2>All Site Author</h2>
+<div>
+  <ul id="all-authors">
+    {{ range $authorname, $author := .Site.Author }}
+      <li>{{ $authorname }}
+        <ul>
+          {{ range $key, $value := $author }}
+          <li>{{ $key }}</li>
+          {{ end }}
+        </ul>
+      </li>
+    {{ end }}
+  </ul>
+</div>
