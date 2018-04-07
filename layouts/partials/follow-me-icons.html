@@ -1,0 +1,34 @@
+{{/* Renders a row of icons for common social following sites */}}
+{{- if $.Site.Params.followicons -}}
+    Follow me on:<br><span class="follow-me">
+    {{- with  .OutputFormats.Get "rss" -}}
+        <a href="{{ .Permalink }}" title="Subscribe to the RSS Feed for this section">
+            <i class="fas fa-rss-square fa-2x fa-fw" style="color:#ffa500"></i>
+        </a> 
+    {{- end -}}
+    {{- with $.Site.Params.followtwitter -}}<a href="https://twitter.com/{{.}}" title="My Twitter timeline">
+        <i class="fab fa-twitter-square fa-2x fa-fw"></i>
+    </a>{{end}}
+    {{- with $.Site.Params.followfb -}}<a href="https://www.facebook.com/{{.}}" title="My Facebook timeline">
+        <i class="fab fa-facebook-square fa-2x fa-fw"></i>
+    </a>{{end}}
+    {{- with $.Site.Params.followgplus -}}<a href="https://plus.google.com/u/0/+{{.}}" title="My Google+ timeline" style="color:#db4437">
+        <i class="fab fa-google-plus-square fa-2x fa-fw"></i>
+    </a>{{end}}
+    {{- with $.Site.Params.followli -}}<a href="https://www.linkedin.com/in/{{.}}" title="My LinkedIn profile">
+        <i class="fab fa-linkedin fa-2x fa-fw"></i>
+    </a>{{end}}
+    {{- with $.Site.Params.followgh -}}<a href="https://github.com/{{.}}" title="My GitHub repositories" style="color:black">
+        <i class="fab fa-github-square fa-2x fa-fw"></i>
+    </a>{{end}}
+    {{- with $.Site.Params.followse -}}<a href="https://stackexchange.com/users/{{.}}" title="My StackExchange profile">
+        <i class="fab fa-stack-exchange fa-2x fa-fw"></i>
+    </a>{{end}}
+    {{- with $.Site.Params.followabout -}}<a href="https://about.me/{{.}}" title="My About Me profile">
+        <span class="fa-layers fa-fw fa-2x" style="color:black">
+        <i class="fas fa-square"></i>
+        <span class="fa-layers-text fa-inverse" data-fa-transform="shrink-11.5" style="font-weight:900">ME</span>
+        </span>
+    </a>{{end}}
+    </span>
+{{- end -}}

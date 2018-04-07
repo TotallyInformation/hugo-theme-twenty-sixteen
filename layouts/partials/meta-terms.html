@@ -1,3 +1,3 @@
-{{- range $cat := .Params.categories -}}
-    <span><a href="/topics/{{ $cat | urlize }}">{{ $cat }}</a></span>
-{{- end }}
+{{- range $idx, $cat := .Params.categories -}}
+    <span><a href="/categories/{{ $cat | urlize }}">{{ $cat }}</a></span>
+{{- end -}}

@@ -1,8 +1,12 @@
 {{ $sbWidth := $.Site.Params.sidebarWidth | default 3 }}
 {{- if $.Site.Params.sidebarSide }}
 <div class="column is-{{ $sbWidth }} section">
-    {{ block "sidebar-top" . }}{{end}}
-    <div>
+    {{ block "sidebar-top" . }}
+        <div class="space-below">{{/* Output link to RSS feed if available for this page */}}
+            {{ partial "follow-me-icons.html" . }}
+        </div>
+    {{end}}
+    <div class="space-below">
         <a href="https://stackexchange.com/users/1375993/julian-knight">
             <img src="https://stackexchange.com/users/flair/1375993.png" width="208" height="58" 
                 alt="profile for Julian Knight on Stack Exchange, a network of free, community-driven Q&amp;A sites" 
@@ -18,7 +22,9 @@
     </div>
     <hr />
     <div style="font-size:60%">
-        Page Kind: {{.Page.Kind}},<br /> Page Section: {{.Page.Section}},<br /> Page Type: {{.Page.Type}}
+        Page Kind: {{.Page.Kind}},<br /> Page Section: {{.Page.Section}},<br /> Page Type: {{.Page.Type}},<br /> Page Type: {{.Page.Layout}}, <br />
+        {{ $e := (getenv "HUGO_ENV") | (getenv "ENVIRONMENT") | default .Site.Params.env | default "DEV" }}
+        Current Environment: {{$e}}
     </div>
     {{end}}
 </div>
