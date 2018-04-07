@@ -1,7 +1,7 @@
 {{ define "main" }}
 
 {{if not .IsHome }}
-<h1>{{ .Title }}</h1>
+<h1 title="{{.Kind}}">{{ .Title }}</h1>
 {{ end }}
 
 {{if .Content }}{{/* --- Display page content, if any --- */}}
