@@ -1,35 +1,34 @@
 {{ define "main" }}
+<div class="content">
 
 {{if not .IsHome }}
 <h1 title="{{.Kind}}">{{ .Title }}</h1>
 {{ end }}
+
+{{- if .Params.Description }}
+<div class="space-below" title="Page description"><blockquote>
+    {{ .Params.Description | markdownify }}
+</blockquote></div>
+{{end}}
 
 {{if .Content }}{{/* --- Display page content, if any --- */}}
 <div class="content">{{ .Content }}</div>
 {{end}}
 
 {{/* --- List section content for the current section --- */}}
-
-    {{ range (where .Data.Pages "Section" "!=" "") }}
+<div class="">
+    {{/* NB: .Data.Pages auto-filters to the "current" content level */}}
+    {{ $paginator := .Paginate (where .Data.Pages "Section" "!=" "") }}
+    {{ range  $paginator.Pages }}
     <div class="">
+        {{/* partial "summary.html" . */}}
         <span class="date">{{ .Date.Format "2006-01-02" }}</span>
         <a href="{{ .Permalink }}">{{ .Title | default .URL }}</a>
         <div>{{ .Description | default .Summary }}</div>
     </div>
     {{ end }}
-
-
-<div class="">
-    {{/* NB: .Data.Pages auto-filters to the "current" content level */}}
-    {{ $paginator := .Paginate (where .Data.Pages "Section" .Section) }}
-    <section class="">
-        {{ range  $paginator.Pages }}
-        <div class="">
-            {{/* partial "summary.html" . */}}
-        </div>
-        {{ end }}
-    </section>
     {{ template "_internal/pagination.html" . }}
 </div>
 
+</div>
 {{ end }}
