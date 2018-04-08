@@ -1,7 +1,7 @@
 {{/* Renders a row of icons for common social following sites */}}
 {{- if $.Site.Params.followicons -}}
     Follow me on:<br><span class="follow-me">
-    {{- with  .OutputFormats.Get "rss" -}}
+    {{- with .OutputFormats.Get "rss" -}}
         <a href="{{ .Permalink }}" title="Subscribe to the RSS Feed for this section">
             <i class="fas fa-rss-square fa-2x fa-fw" style="color:#ffa500"></i>
         </a> 
