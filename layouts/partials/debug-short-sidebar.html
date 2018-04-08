@@ -1,0 +1,10 @@
+{{/* Add some debugging info - embed in site-sidebar.html to help you understand what is going on */}}
+<div style="font-size:60%">
+    Page Kind: {{.Page.Kind}},<br /> Page Section: {{.Page.Section | default "NOT SET" }},<br /> Page Type: {{.Page.Type}},<br /> 
+    Sharing: {{ .Site.Params.Sharingicons | default "NOT DEFINED" }}, <br /> Comments: {{ .Params.comments | default "NOT DEFINED" }}, <br /> 
+    Disquss: {{ $.Site.DisqusShortname | default "NOT DEFINED" }}, <br />
+    HUGO_ENV: {{ (getenv "HUGO_ENV") | default "NOT DEFINED" }}, <br />
+    ENVIRONMENT: {{ (getenv "ENVIRONMENT") | default "NOT DEFINED" }}, <br />
+    Site Params Env: {{ .Site.Params.env | default "NOT DEFINED" }}
+</div>
+<hr />

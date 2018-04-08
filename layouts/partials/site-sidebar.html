@@ -1,11 +1,12 @@
 {{ $sbWidth := $.Site.Params.sidebarWidth | default 3 }}
 {{- if $.Site.Params.sidebarSide }}
 <div class="column is-{{ $sbWidth }} section">
-    {{ block "sidebar-top" . }}
+    {{- if .Site.Params.Debug -}}{{- partial "debug-short-sidebar.html" . -}}{{- end -}}
+    {{- block "sidebar-top" . -}}
         <div class="space-below">{{/* Output link to RSS feed if available for this page */}}
-            {{ partial "follow-me-icons.html" . }}
+            {{- partial "follow-me-icons.html" . -}}
         </div>
-    {{end}}
+    {{- end -}}
     <div class="space-below">
         <a href="https://stackexchange.com/users/1375993/julian-knight">
             <img src="https://stackexchange.com/users/flair/1375993.png" width="208" height="58" 
@@ -13,19 +14,13 @@
                 title="profile for Julian Knight on Stack Exchange, a network of free, community-driven Q&amp;A sites" />
         </a>
     </div>
-    {{- if $.Site.Params.twitterUser }}
-    {{ partial "twitter-timeline.html" . }}
-    {{end}}
-    {{ block "sidebar-bottom" . }}
+    {{- if $.Site.Params.twitterUser -}}
+    {{- partial "twitter-timeline.html" . -}}
+    {{- end -}}
+    {{- block "sidebar-bottom" . -}}
     <div>
         <a href="https://www.techdirt.com/netdeclaration"><img src="/images/net-declaration.png" title="Declaration of Internet Freedom" width="560" height="823" /></a>
     </div>
-    <hr />
-    <div style="font-size:60%">
-        Page Kind: {{.Page.Kind}},<br /> Page Section: {{.Page.Section}},<br /> Page Type: {{.Page.Type}},<br /> Page Type: {{.Page.Layout}}, <br />
-        {{ $e := (getenv "HUGO_ENV") | (getenv "ENVIRONMENT") | default .Site.Params.env | default "DEV" }}
-        Current Environment: {{$e}}
-    </div>
-    {{end}}
+    {{- end -}}
 </div>
-{{end}}
+{{- end -}}
