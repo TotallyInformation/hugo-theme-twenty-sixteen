@@ -1,4 +1,4 @@
-{{ define "main" }}
+{{- define "main" -}}
 
 <article class="content">
     <header>
@@ -20,7 +20,7 @@
     </div>
     {{end}}
     
-    {{- if .IsTranslated }}
+    {{- if .IsTranslated -}}
     <h4>{{ i18n "translations" }}</h4>
     <ul>
         {{ range .Translations }}
@@ -29,18 +29,19 @@
         </li>
         {{ end }}
     </ul>
-    {{ end }}
+    {{- end -}}
     
-    {{- if or (ne ($.Param "sharingicons") false) (.Site.DisqusShortname) }}
+    {{- if or (ne ($.Param "sharingicons") false) (.Site.DisqusShortname) -}}
     <hr>
     <footer>
-
-        {{ if (ne ($.Param "sharingicons") false) }} {{ partial "sharing-icons.html" . }} {{ end }} {{ if and (.Site.DisqusShortname) (ne .Params.comments false) }}
-        {{ template "_internal/disqus.html" . }} {{ end }}
+        {{- if (ne ($.Param "sharingicons") false) -}}
+            {{- partial "sharing-icons.html" . -}}
+        {{- end -}} 
+        {{- if and (.Site.DisqusShortname) (ne .Params.comments false) -}}
+            {{- template "_internal/disqus.html" . -}}
+        {{- end -}}
     </footer>
-    {{ end }}
-
+    {{- end -}}
 </article>
 <!-- /.blog-post -->
-
-{{ end }}
+{{- end -}}
