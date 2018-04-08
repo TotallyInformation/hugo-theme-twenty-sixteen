@@ -7,12 +7,47 @@ licenselink = "https://github.com/TotallyInformation/hugo-theme-twenty-sixteen/b
 description = ""
 homepage = "https://github.com/TotallyInformation/hugo-theme-twenty-sixteen"
 tags = []
-features = []
+features = ["menu","disqus"]
 min_version = "0.38"
 
+#sectionPagesMenu = "main"
+enableRobotsTXT = true
+Paginate = 10 # Number of posts to show before paginating
+enableEmoji = true # Enable emojis in pages. e.g. :smile: - @see https://www.webpagefx.com/tools/emoji-cheat-sheet/
+
+# RSS settings
+#rssURI = "feed" # default index.xml
+rssLimit = 10 # default unlimited
+copyright = "This work is licensed under a Creative Commons Attribution-ShareAlike 4.0 International License."
+
+# Disqus shortcode
+# Disable comments for any individual post by adding "comments: false" in its frontmatter
+#disqusShortname = ""
+
+# -- Don't put individual entries below here or group entries above here -- #
+
+# Template Author
 [author]
   name = "Julian Knight"
-  homepage = ""
+  homepage = "https://it.knightnet.org.uk"
+
+[permalinks]
+  # Configures post URLs
+  #posts = "/:year/:month/:slug"
+  #pages = "/:slug"
+  #kbs = "/kb/:slug"
+  #categories = "/categories/:slug"
+  #tags = "/tags/:slug
+
+# Adds a fulltext output for use with a custom search tool
+[outputFormats]
+    [outputFormats.SearchIndex]
+        mediaType = "application/json"
+        baseName = "searchindex"
+        isPlainText = true
+        notAlternative = true
+[outputs]
+    home = ["HTML","RSS","SearchIndex"]
 
 [params]
     # If false, all of blog post will appear on front page (and in pagination)
@@ -38,4 +73,20 @@ min_version = "0.38"
     # twitterHeight = 600
     # Twitter widget theme (See https://dev.twitter.com/web/embedded-timelines )
     twitterTheme = "dark" # dark/light/transparent, default dark
-    
+    # Width & height in pixels (defaults to the width of the sidebar, expands to height of tweet list)
+    # twitterWidth = 220
+    # twitterHeight = 600
+    # Twitter widget theme (See https://dev.twitter.com/web/embedded-timelines )
+    # twitterTheme = "light" # dark/light/transparent, default dark
+    # twitterChrome = "" # default "nofooter noborders"
+
+    # Follow icons - NB: includes showing the RSS feed icon
+    followicons = false
+    #followtwitter = "" # Twitter https://twitter.com/<<followtwitter>>
+    #followfb = "" # Facebook https://www.facebook.com/julian.knight.0
+    #followgplus = "JulianKnight-IT" # Google+ https://plus.google.com/u/0/+<<followfb>>
+    #followli = "" # LinkedIn https://www.linkedin.com/in/<<followli>>/
+    #followgh = "" # GitHub https://github.com/<<followgh>>
+    #followse = "" # Stack Exchange https://stackexchange.com/users/<<followse>> NB: the user number not name
+    #followabout = "" # About Me https://about.me/<<followabout>>
+    # Other possibilities not yet implemented: codepen, keybase, flickr, instagram, email, pintrest    
