@@ -5,7 +5,7 @@
         <h2 class="" title="{{.Kind}}">
             {{ .Title | markdownify }}
         </h2>
-        {{ partial "meta-date.html" . }}
+        {{ partial "meta-data.html" . }}
     </header>
 
     {{- if .Params.Description }}
@@ -30,6 +30,17 @@
         {{ end }}
     </ul>
     {{- end -}}
+
+    <div class="space-above">{{/* Previous & Next links */}}
+        <hr />
+        {{- with .PrevInSection -}}
+            <div class="is-pulled-left" title="Previous page/article in this section"><a class="prev" href="{{ .Permalink }}"><b>Previous:</b> {{ .Title }}</a></div>
+        {{- end -}}
+        {{- with .NextInSection -}}
+            <div class="is-pulled-right" title="Next page/article in this section"><a class="next" href="{{ .Permalink }}"><b>Next:</b> {{ .Title }}</a></div>
+        {{- end -}}
+        <div class="is-clearfix"></div>
+    </div>
     
     {{- if or (ne ($.Param "sharingicons") false) (.Site.DisqusShortname) -}}
     <hr>
