@@ -1,3 +1,22 @@
-{{- range $idx, $cat := .Params.categories -}}
-    <span><a href="/categories/{{ $cat | urlize }}">{{ $cat }}</a></span>
+{{/* Show Section, Categories and Tags for this page */}}
+{{/* <i class="fas fa-folder"></i><i class="fas fa-folder-open"></i></i><i class="far fa-list-alt"></i> */}}
+<br />
+{{- if ne .Page.Section .Page.Name -}}
+    <span title="Current Section"><i class="far fa-folder-open"></i> <a href="/{{.Page.Section | urlize }}">{{.Page.Section | title}}</a></span>
+{{- end -}}
+{{ with .Params.categories }} 
+    <span title="This pages categories"><i class="fas fa-list-alt"></i> 
+    {{- range $idx, $cat := . }} 
+        {{ $t1 := (printf "<a href='/categories/%s'>%s</a>" ($cat | urlize) $cat) }}
+        {{ $.Scratch.Add "l1" (slice $t1) }}
+    {{- end -}}
+    {{ delimit ($.Scratch.Get "l1") ", " }}</span>
+{{- end -}}
+{{ with .Params.tags }} 
+    <i class="fas fa-tags"></i> 
+    {{- range $idx, $tag := . }} 
+        {{ $t1 := (printf "<span><a href='/tags/%s'>%s</a></span>" ($tag | urlize) $tag) }}
+        {{ $.Scratch.Add "l1" (slice $t1) }}
+    {{- end -}}
+    {{ delimit ($.Scratch.Get "l1") ", " }}
 {{- end -}}
