@@ -1,6 +1,7 @@
 border-s { border: solid silver 1px }
 .navbar-item.is-active { font-weight: bold }
 .space-below { margin-bottom: 1em; }
+.space-above { margin-top: 1em; }
 .follow-me { padding-right:0.25em; }
 .hidden { display: none; }
 
