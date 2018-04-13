@@ -1,0 +1,10 @@
+{{/* Output a JSON List of Categories and Metadata */}}
+{{- $numCats := len .Site.Taxonomies.categories -}}
+{{- $i := 0 -}}
+[
+  {{- range $key, $catPage :=  .Site.Taxonomies.categories -}}
+      {{- $i := add $i 1 -}}
+      {"{{$key}}": {{ $catPage.Count }} }
+      {{ if eq $i $numCats }}, {{ end }}
+  {{- end -}}
+]

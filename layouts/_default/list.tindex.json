@@ -1,0 +1,10 @@
+{{/* Output a JSON List of Tags and Metadata */}}
+{{- $numTags := len .Site.Taxonomies.tags -}}
+{{- $i := 0 -}}
+[
+  {{- range $key, $tagPage :=  .Site.Taxonomies.tags -}}
+      {{- $i := add $i 1 -}}
+      {"{{$key}}": {{ $tagPage.Count }} }
+      {{ if eq $i $numTags }}, {{ end }}
+  {{- end -}}
+]
