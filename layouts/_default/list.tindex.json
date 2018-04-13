@@ -1,9 +1,9 @@
 {{/* Output a JSON List of Tags and Metadata */}}
 {{- $numTags := len .Site.Taxonomies.tags -}}
-{{- $i := 0 -}}
+{{- $.Scratch.Set "tindex" 0 -}}
 [
   {{- range $key, $tagPage :=  .Site.Taxonomies.tags -}}
-      {{- $i := add $i 1 -}}
-      {"{{$key}}": {{- $tagPage.Count -}} }{{- if ne $i $numTags -}}, {{- end -}}
+      {{- $.Scratch.Add "tindex" 1 -}}
+      {"{{$key}}": {{ $tagPage.Count -}} }{{- if ne ($.Scratch.Get "tindex") $numTags -}}, {{- end -}}
   {{- end -}}
 ]
