@@ -4,7 +4,6 @@
 [
   {{- range $key, $tagPage :=  .Site.Taxonomies.tags -}}
       {{- $i := add $i 1 -}}
-      {"{{$key}}": {{ $tagPage.Count }} }
-      {{ if eq $i $numTags }}, {{ end }}
+      {"{{$key}}": {{- $tagPage.Count -}} }{{- if ne $i $numTags -}}, {{- end -}}
   {{- end -}}
 ]
