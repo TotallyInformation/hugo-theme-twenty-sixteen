@@ -1,5 +1,5 @@
 {{/* Add some debugging info - embed in site-sidebar.html to help you understand what is going on */}}
-{{ if or ( (.Site.Params.Debug) (ne (getenv "HUGO_ENV") "production") )}}
+{{ if or ( (eq .Site.Params.Debug true) (ne (getenv "HUGO_ENV") "production") ) }}
 <div style="font-size:60%">
     Page Kind: {{.Page.Kind}},<br /> 
     Page Section: {{.Page.Section | default "NOT SET" }},<br /> 

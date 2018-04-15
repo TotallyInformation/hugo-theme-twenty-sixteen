@@ -1,4 +1,5 @@
 {{/* Lists all the pages in the current context for .Data.Pages */}}
+{{ if or ( (eq .Site.Params.Debug true) (ne (getenv "HUGO_ENV") "production") ) }}
 <div title="debug-data-pages.html"><hr><h2>.Data.Pages</h2><table>
     <thead><tr><th>#</th><th>Section</th><th>Type</th><th>Name</th></tr></thead><tbody>
     {{ range $idx, $pg := .Data.Pages }}
@@ -10,3 +11,4 @@
     </tr>
     {{end}}
 </tbody></table><hr></div>
+{{end}}

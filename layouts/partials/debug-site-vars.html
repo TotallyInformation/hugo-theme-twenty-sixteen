@@ -1,3 +1,4 @@
+{{ if or ( (eq .Site.Params.Debug true) (ne (getenv "HUGO_ENV") "production") ) }}
 <h2>Twenty Sixteen Theme Site Variables</h2>
 <dl>
     <dt>.Site.Params.description:</dt><dd>{{ .Site.Params.description }}</dd>
@@ -34,3 +35,4 @@
     </dd>
     <dt>.Site.Title:</dt><dd>{{ .Site.Title }}</dd>
 </dl>
+{{end}}
