@@ -1,9 +1,9 @@
 {{/* Output a JSON List of Categories and Metadata */}}
 {{- $numCats := len .Site.Taxonomies.categories -}}
 {{- $.Scratch.Set "cindex" 0 -}}
-[ 
+{ "categories": { 
   {{- range $key, $catPage :=  .Site.Taxonomies.categories -}}
       {{- $.Scratch.Add "cindex" 1 -}}
-      {"{{$key}}": {{ $catPage.Count -}} }{{- if ne ($.Scratch.Get "cindex") $numCats -}}, {{- end -}}
+      "{{$key}}": {{ $catPage.Count -}}{{- if ne ($.Scratch.Get "cindex") $numCats -}}, {{- end -}}
   {{- end -}}
-]
+} }
