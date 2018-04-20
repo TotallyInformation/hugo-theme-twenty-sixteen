@@ -3,6 +3,22 @@ A blog and information management theme for Hugo roughly based on the Wordpress 
 
 **WARNING**: This template is NOT YET READY.
 
+## Features
+
+* Simple, clean layout based loosely on the WordPress 2016 default theme
+* Mix of posts and pages as needed
+* Front page, categories and tags listing pages include ALL pages and posts
+* Drop-down Site menus with configurable separators
+* Safe list of "follow me" social icons (no cookies, GDPR safe)
+* Automatically incorporates `description` frontmatter field in page output
+* Pages show frontmatter metadata including `date`, `Lastmod`, `title`, `description`, `categories`, `tags`
+* Automatic generation of sitemap and RSS feeds
+* RSS feeds show full article not summary (be kind to your readers)
+* Bulma CSS framework, provides basic responsiveness for mobile
+* Fontawsome
+* SEO, Google Search, Facebook, Twitter metadata optimisations included (NOT YET COMPLETE)
+* Disqus commenting & Google Analytics available
+
 ## Usage
 
 To use this for yourself, install as a git submodule as per the instructions on the Hugo website.

@@ -1,8 +1,8 @@
 {{/* Show an abbreviated form of the article for list pages */}}
 <div class="space-below">
-    <div class="has-text-weight-bold">
+    <h3>
         <span class="date">{{ .Date.Format "2006-01-02" }}</span>
         <a href="{{ .Permalink }}">{{ .Title | default .URL }}</a>
-    </div>
+    </h3>
     <div>{{ .Description | default .Summary }}</div>
 </div>

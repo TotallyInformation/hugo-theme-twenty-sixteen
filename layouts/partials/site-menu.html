@@ -23,29 +23,37 @@
             {{/* range and (where .Site.Menus.main "Name" "not in" .Site.Params.menuExclude ) */}}
             {{ range .Site.Menus.main }}
                 {{ if .HasChildren }} {{/* If a menu has child items ... */}}
-                <div class="navbar-item has-dropdown is-hoverable {{ if $currentPage.HasMenuCurrent "main" . }}has-text-weight-bold{{ end }}" aria-haspopup="true">
+                <div class="navbar-item has-dropdown is-hoverable {{ if (or ($currentPage.HasMenuCurrent "main" .) ($currentPage.IsMenuCurrent "main" .)) }}has-text-weight-bold{{ end }}" aria-haspopup="true">
                     <a href="{{.URL | default '#'}}" class="navbar-link">
                         {{ .Pre }}
                         <span>{{ .Name }}</span>
                     </a>
                     <div class="navbar-dropdown is-boxed">
                     {{ range .Children }}
-                        <a href="{{ .URL }}" class="navbar-item {{ if $currentPage.IsMenuCurrent "main" . }}has-text-weight-bold{{ end }}">
-                            {{ .Name }}
-                        </a>
+                        {{/* Check for menu items named like "---- 1", etc and turn into HR's */}}
+                        {{if eq (substr .Name 0 5) "---- " }}
+                            <hr />
+                        {{else}}
+                            <a href="{{ .URL }}" class="navbar-item {{ if $currentPage.IsMenuCurrent "main" . }}has-text-weight-bold{{ end }}">
+                                {{ .Name }}
+                            </a>
+                        {{end}}
                     {{ end }}
                     </div>
                 </div>
                 {{else}} {{/*Plain menu item (no children) */}}
+                {{if eq (substr .Name 0 5) "---- " }}
+                <hr />
+                {{else}}
                 <a href="{{.URL}}" class="navbar-item {{ if $currentPage.IsMenuCurrent "main" . }}has-text-weight-bold{{ end }}">
                     {{ .Pre }}
                     <span>{{ .Name }}</span>
                 </a>
-                {{end}}
+                {{end}}{{end}}
             {{end}}
         </div>
     </nav>
     <a href="/" rel="home">
-        <img src="/images/brimham-rocks-1200x279.jpg" class="pure-img" alt="Much Ado About IT" width="100%">
+        <img src="/images/brimham-rocks-1200x279.jpg" class="pure-img" title="Brimham Rocks, Yorkshire, UK" alt="Much Ado About IT" width="100%">
     </a>
 </div>
