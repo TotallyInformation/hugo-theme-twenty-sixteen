@@ -103,4 +103,27 @@
     <link rel="stylesheet" href="{{ . }}" />
 {{end}}{{end}}
 <script src="/js/2016.js"></script>
+<script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "Blog",
+        "url": "{{ $.Site.BaseURL }}"
+    }
+</script>
+<script type="application/ld+json">
+    {{- with (readDir "data") -}}
+        {{- range $f := where . "Name" "eq" "siteauthorld.json" -}}
+            {{- $pf := (printf "%s%s" "data/" $f.Name) -}}
+            {{- readFile $pf | safeHTML -}}
+        {{- end -}}
+    {{- end -}}
+</script>
+<script type="application/ld+json">
+    {{- with (readDir "data") -}}
+        {{- range $f := where . "Name" "eq" "siteorgld.json" -}}
+            {{- $pf := (printf "%s%s" "data/" $f.Name) -}}
+            {{- readFile $pf | safeHTML -}}
+        {{- end -}}
+    {{- end -}}
+</script>
 </html>

@@ -18,6 +18,7 @@ A blog and information management theme for Hugo roughly based on the Wordpress 
 * Fontawsome
 * SEO, Google Search, Facebook, Twitter metadata optimisations included (NOT YET COMPLETE)
 * Disqus commenting & Google Analytics available
+* Schema.org extensions for blog (built in), person (put ld+json in `/data/siteauthorld.json` file) and organisation (put ld+json in `/data/siteauthorld.json` file).
 
 ## Usage
 
