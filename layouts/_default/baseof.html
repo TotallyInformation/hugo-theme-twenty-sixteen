@@ -4,8 +4,16 @@
 
 <head>
     <meta charset="utf-8">
-    {{/* NOTE: the Sites title, and if there is a page title, that is set too */}}
-    <title>{{ block "title" . }}{{ .Site.Title }} {{ with .Params.Title }} | {{ . }}{{ end }}{{ end }}</title>
+    {{/* NOTE: the Sites title, and if there is a page title, that is set too 
+         Added SEO, "site.title | page title" for home, "page title | site title" for everything else
+      */}}
+    <title>{{ block "title" . -}}
+        {{- if .IsHome -}}
+            {{ .Site.Title }} {{ with .Params.Title }} | {{ . }}{{ end }}
+        {{- else -}}
+            {{ with .Params.Title }}{{ . }} | {{ end }}{{ .Site.Title }}
+        {{- end -}}
+    {{- end -}}</title>
 
     <link rel="canonical" href="{{ .Permalink }}">
 
