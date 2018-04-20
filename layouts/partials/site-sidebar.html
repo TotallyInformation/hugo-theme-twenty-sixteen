@@ -7,6 +7,7 @@
             {{- partial "follow-me-icons.html" . -}}
         </div>
     {{- end -}}
+    {{/* Stack Exchange image */}}
     <div class="space-below">
         <a href="https://stackexchange.com/users/1375993/julian-knight">
             <img src="https://stackexchange.com/users/flair/1375993.png" width="208" height="58" 
@@ -14,6 +15,9 @@
                 title="profile for Julian Knight on Stack Exchange, a network of free, community-driven Q&amp;A sites" />
         </a>
     </div>
+    {{/* Tag Cloud */}}
+    
+    {{/* No more twitter timeline for now - too slow and causing GDPR issues }}
     {{- if $.Site.Params.twitterUser -}}
     {{- partial "twitter-timeline.html" . -}}
     {{- end -}}
@@ -22,5 +26,6 @@
         <a href="https://www.techdirt.com/netdeclaration"><img src="/images/net-declaration.png" title="Declaration of Internet Freedom" width="560" height="823" /></a>
     </div>
     {{- end -}}
+    {{ */}}
 </div>
 {{- end -}}

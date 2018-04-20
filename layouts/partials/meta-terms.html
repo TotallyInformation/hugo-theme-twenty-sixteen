@@ -13,10 +13,10 @@
     {{ delimit ($.Scratch.Get "l1") ", " }}</span>
 {{- end -}}
 {{ with .Params.tags }} 
-    <i class="fas fa-tags"></i> 
+    <span title="This pages tags"><i class="fas fa-tags"></i> 
     {{- range $idx, $tag := . }} 
-        {{ $t1 := (printf "<span><a href='/tags/%s'>%s</a></span>" ($tag | urlize) $tag) }}
-        {{ $.Scratch.Add "l1" (slice $t1) }}
+        {{ $t2 := (printf "<span><a href='/tags/%s'>%s</a></span>" ($tag | urlize) $tag) }}
+        {{ $.Scratch.Add "l2" (slice $t2) }}
     {{- end -}}
-    {{ delimit ($.Scratch.Get "l1") ", " }}
+    {{ delimit ($.Scratch.Get "l2") ", " }}</span>
 {{- end -}}
