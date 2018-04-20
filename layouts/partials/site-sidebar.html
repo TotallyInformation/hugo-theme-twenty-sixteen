@@ -16,16 +16,14 @@
         </a>
     </div>
     {{/* Tag Cloud */}}
-    
+
     {{/* No more twitter timeline for now - too slow and causing GDPR issues }}
     {{- if $.Site.Params.twitterUser -}}
     {{- partial "twitter-timeline.html" . -}}
     {{- end -}}
-    {{- block "sidebar-bottom" . -}}
-    <div>
-        <a href="https://www.techdirt.com/netdeclaration"><img src="/images/net-declaration.png" title="Declaration of Internet Freedom" width="560" height="823" /></a>
-    </div>
-    {{- end -}}
     {{ */}}
+    
+    {{- block "sidebar-bottom" . -}}
+    {{- end -}}
 </div>
 {{- end -}}
