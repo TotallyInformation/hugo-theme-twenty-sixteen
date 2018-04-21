@@ -30,6 +30,8 @@ your copy updated with any upstream changes.
 
 ## File Layout
 
+You should use the following file layout when using this theme
+
 ```
 content
 |
@@ -41,6 +43,10 @@ content
     ++--A folder for each kb subject area
         |
         +--index.md    | for each folder. 
++---data
+    |
+    +---siteauthorld.json | ld+json format person data (schema.org), optional
+    +---siteorgld.json    | ld+json format organisation data (schema.org), optional
 
 static
 |
@@ -48,6 +54,7 @@ static
 +---uploads   | This is where blog related files go such as images and other downloadable content
 +---css       | Style overrides. a `2016.css` file is located in the template static folder
 +---js        | Javascript overrides. a `2016.js` file is located in the template static folder
++---favicon.ico
 
 config.toml   | The main Hugo configuration file
 

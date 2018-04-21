@@ -61,6 +61,7 @@
     {{- $e := (getenv "HUGO_ENV") | (getenv "ENVIRONMENT") | default .Site.Params.env | default "DEV" -}}
     {{/* - if eq $e "production" - */}}
     {{- if eq (getenv "HUGO_ENV") "production" | or (eq .Site.Params.env "production")  }}
+        /* production only */
         {{ template "_internal/google_analytics_async.html" . }}
     {{end}}
 
