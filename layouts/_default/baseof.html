@@ -75,6 +75,9 @@
     {{end}}{{end}}
 
     <script defer src="https://use.fontawesome.com/releases/v5.0.9/js/all.js" integrity="sha384-8iPTk2s/jMVj81dnzb/iFR2sdA7u06vHJyyLlAd4snFpCl/SnyUjRrbdJsw1pGIl" crossorigin="anonymous"></script>
+    {{- if and ((.IsHome) ($.Site.Params.netlifycmsid)) -}}
+        <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
+    {{- end -}}
     {{- block "extra-scripts-head" . }}{{end}}
     
 </head>
@@ -134,5 +137,18 @@
         {{- end -}}
     </script>
 
+    {{- if and ((.IsHome) ($.Site.Params.netlifycmsid)) -}}
+    <script>
+        if (window.netlifyIdentity) {
+            window.netlifyIdentity.on("init", user => {
+            if (!user) {
+                window.netlifyIdentity.on("login", () => {
+                document.location.href = "/admin/";
+                });
+            }
+            });
+        }
+    </script>
+    {{- end -}}
 </body>
 </html>
