@@ -134,5 +134,8 @@
         {{- end -}}
     </script>
 
+    {{- if (eq $.Site.Params.DebugConsole true) -}}
+        {{- partial "debug-console.html" . -}}
+    {{- end -}}
 </body>
 </html>
