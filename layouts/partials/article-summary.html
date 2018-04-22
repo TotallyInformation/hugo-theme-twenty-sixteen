@@ -1,8 +1,18 @@
-{{/* Show an abbreviated form of the article for list pages */}}
-<div class="space-below">
-    <h3>
-        <span class="date">{{ .Date.Format "2006-01-02" }}</span>
-        <a href="{{ .Permalink }}">{{ .Title | default .URL }}</a>
-    </h3>
-    <div>{{ .Description | default .Summary }}</div>
+{{/* Show an abbreviated form of the article for list pages.
+   * Note that the Date show is the Lastmod if available.
+   */}}
+<div class="columns space-below">
+    <div class="column is-one-fifth">
+        {{ $mytime := (.Lastmod.Format "2006-01-02") | default (.Date.Format "2006-01-02") }}
+        {{ $mylm := (.Lastmod.Format "2006-01-02") }}
+        {{ $mydt := (.Date.Format "2006-01-02") }}
+        <span class="date has-text-weight-bold" title="{{ if ne $mylm $mydt -}}{{ printf "Origianlly Published: %s" $mydt }}{{end}}">
+            <time datetime="{{ $mytime }}">{{ $mytime }}</time>{{ if ne $mylm $mydt -}} <span style="font-size:68%" aria-label="Updated indicator"> &#x1F551;</span>{{end}}
+        </span>
+        {{ partial "meta-terms.html" . }}
+    </div>
+    <div class="column">
+        <h3><a href="{{ .Permalink }}">{{ .Title | default .URL }}</a></h3>
+        <p>{{ .Description | default .Summary }}</p>
+    </div>
 </div>
