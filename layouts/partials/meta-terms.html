@@ -1,11 +1,15 @@
-{{/* Show Section, Categories and Tags for this page */}}
-{{/* <i class="fas fa-folder"></i><i class="fas fa-folder-open"></i></i><i class="far fa-list-alt"></i> */}}
+{{/* Show Section, Categories and Tags for this page.
+   * Used in list.html>article-summary.html and single.html>meta-data.html
+   * Dependencies: Bulma CSS and FontAwesome
+   */}}
 <br />
-{{- if ne .Page.Section .Page.Name -}}
-    <span title="Current Section"><i class="far fa-folder-open"></i> <a href="/{{.Page.Section | urlize }}">{{.Page.Section | title}}</a></span>
+{{- if ne .Section .Name -}}
+    <span title="Section">
+        {{/*<em class="far fa-folder-open"></em> */}}&#x1F4D6; <a href="/{{.Section | urlize }}">{{.Section | title}}</a>
+    </span>
 {{- end -}}
 {{ with .Params.categories }} 
-    <span title="This pages categories"><i class="fas fa-list-alt"></i> 
+     | <span title="Categories">{{/*<em class="fas fa-list-alt"></em> */}}&#x1F4CE; 
     {{- range $idx, $cat := . }} 
         {{ $t1 := (printf "<a href='/categories/%s'>%s</a>" ($cat | urlize) $cat) }}
         {{ $.Scratch.Add "l1" (slice $t1) }}
@@ -13,7 +17,7 @@
     {{ delimit ($.Scratch.Get "l1") ", " }}</span>
 {{- end -}}
 {{ with .Params.tags }} 
-    <span title="This pages tags"><i class="fas fa-tags"></i> 
+     | <span title="Tags">{{/*<em class="fas fa-tags"></em> */}}&#x1F516; 
     {{- range $idx, $tag := . }} 
         {{ $t2 := (printf "<span><a href='/tags/%s'>%s</a></span>" ($tag | urlize) $tag) }}
         {{ $.Scratch.Add "l2" (slice $t2) }}
