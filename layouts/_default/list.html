@@ -20,7 +20,7 @@
     {{/* --- List section content for the current section --- */}}
     <div class="articles">
         {{/* NB: .Data.Pages auto-filters to the "current" content level */}}
-        {{- $paginator := .Paginate (where .Data.Pages "Section" "!=" "") -}}
+        {{- $paginator := .Paginate (where .Data.Pages.ByLastmod.Reverse "Section" "!=" "") -}}
         {{- range  $paginator.Pages -}}
             {{- partial "article-summary.html" . -}}
         {{- end -}}
