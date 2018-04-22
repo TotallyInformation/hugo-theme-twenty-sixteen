@@ -8,13 +8,15 @@
         </div>
     {{- end -}}
     {{/* Stack Exchange image */}}
+    {{- with $.Site.Params.seflair -}}
     <div class="space-below">
-        <a href="https://stackexchange.com/users/1375993/julian-knight">
-            <img src="https://stackexchange.com/users/flair/1375993.png" width="208" height="58" 
-                alt="profile for Julian Knight on Stack Exchange, a network of free, community-driven Q&amp;A sites" 
-                title="profile for Julian Knight on Stack Exchange, a network of free, community-driven Q&amp;A sites" />
+        <a href="https://stackexchange.com/users/{{.}}">
+            <img src="https://stackexchange.com/users/flair/{{.}}.png"
+                alt="Stack Exchange flair image" 
+                title="Link to my profile on Stack Exchange, a network of free, community-driven Q&amp;A sites" />
         </a>
     </div>
+    {{- end -}}
     {{/* Tag Cloud */}}
 
     {{/* No more twitter timeline for now - too slow and causing GDPR issues }}
