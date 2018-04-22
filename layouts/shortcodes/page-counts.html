@@ -1,0 +1,8 @@
+{{/* Show a count of pages by different types */}}
+<p>
+    There are {{ len .Site.RegularPages }} pages currently on this site.
+    {{ len (where .Site.RegularPages "Section" "=" "posts") }} <a href="/posts">blog posts</a>,
+    {{ len (where .Site.RegularPages "Section" "=" "kb") }} <a href="/kb">knowledgebase pages</a>,
+    {{ len (where .Site.RegularPages "Section" "=" "about") }} <a href="/about"><em>about</em> pages</a>
+    and {{ len (where .Site.RegularPages "Section" "=" "projects") }} <a href="/projects">project pages</a>.
+</p>
