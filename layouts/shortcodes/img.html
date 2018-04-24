@@ -1,0 +1,52 @@
+{{/*-- How the shortcode is used: -->
+   * {{< img src="/img/ascendia" type="jpg" alt="" caption="Ascendia - ProgPower 2016" >}}
+   */}}
+
+{{/*
+<div style="width:900px !important;border:1px solid silver;">
+  <img
+    src="{{ .Get "src" }}"
+    alt="{{ .Get "alt" }}" style="width:50% !important;border:1px solid silver;"/>
+  {{ with .Get "caption"}}
+    <p>{{ . }}</p>
+  {{end}}
+</div>
+*/}}
+
+<figure style="width:{{ .Get "width" | default "90%"}} !important;">
+  <img
+    src="{{ .Get "src" }}"
+    alt="{{ .Get "alt" }}" />
+  {{ if .Get "caption"}}
+    <figcaption>{{ .Get "caption" }}</figcaption>
+  {{end}}
+</figure>
+
+{{/*<!-- The shortcode functionality - in layouts/shortcodes/img.html -->
+<div class="picture">
+  {{ if .Get "caption"}}
+  <figure>
+  {{ end }}
+    <picture>
+      <!-- Large screens -->
+      <source
+        media="(min-width: 535px)"
+        data-original-set="{{ .Get "src" }}.{{ .Get "type" }} 1x,
+                {{ .Get "src" }}@2x.{{ .Get "type" }} 2x">
+      <!-- Small screens -->
+      <source
+        media="(max-width: 534px)"
+        data-original-set="{{ .Get "src" }}-sm.{{ .Get "type" }} 1x,
+                {{ .Get "src" }}-sm@2x.{{ .Get "type" }} 2x">
+      <!-- Fallback -->
+      <img
+        data-original="{{ .Get "src" }}.{{ .Get "type" }}"
+        data-original-set="{{ .Get "src" }}@2x.{{ .Get "type" }} 2x"
+        alt="{{ .Get "alt" }}"{{ if .Get "caption"}} class="img-fluid figure-img"{{ end }}>
+    </picture>
+  {{ if .Get "caption"}}
+    <figcaption>{{ .Get "caption" }}</figcaption>
+  </figure>
+  {{ end }}
+</div>
+*/}}
