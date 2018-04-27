@@ -1,0 +1,12 @@
+{{/* Show a set (default 7) of pages related to the current one */}}
+{{- if .IsPage -}}
+{{ $related := .Site.RegularPages.Related . | first 5 }}
+{{ with $related }}
+<h3>Related posts:</h3>
+<ol>
+	{{ range . }}
+	<li><a href="{{ .RelPermalink }}">{{ .Title }}</a></li>
+	{{ end }}
+</ol>
+{{ end }}
+{{- end -}}
