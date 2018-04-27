@@ -18,6 +18,7 @@
     console.log('Comments?: ', '{{ .Params.comments | default "NOT DEFINED" }}')
     console.log('Disquss?: ', '{{ $.Site.DisqusShortname | default "NOT DEFINED" }}')
     console.log('Google Analytics?: ', '{{ .Site.GoogleAnalytics | default "NOT DEFINED" }}')
+    console.log('Count of related pages: ', '{{if .Page.IsPage}}{{ len (.Site.RegularPages.Related .) }}{{end}}' )
     console.log(': ', '')
     console.log('---------------------------------------------------')
 </script>
