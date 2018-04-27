@@ -49,6 +49,30 @@ copyright = "This work is licensed under a Creative Commons Attribution-ShareAli
 [outputs]
     home = ["HTML","RSS","SearchIndex"]
 
+# related content
+[related]
+    # Only include matches with rank >= threshold. This is a normalized rank between 0 and 100.
+    threshold = 80
+    # To get stable "See also" sections we, by default, exclude newer related pages.
+    includeNewer = true
+    # Will lower case keywords in both queries and in the indexes.
+    toLower = true
+
+[[related.indices]]
+    name = "keywords"
+    weight = 0
+[[related.indices]]
+    name  = "author"
+    toLower = true
+    weight = 30
+[[related.indices]]
+    name  = "tags"
+    weight = 100
+[[related.indices]]
+    name  = "date"
+    weight = 10
+    pattern = "2006"
+
 [params]
     # If false, all of blog post will appear on front page (and in pagination)
     truncate = true
