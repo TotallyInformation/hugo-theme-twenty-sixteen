@@ -28,6 +28,47 @@ See below for more specific instructions.
 If you want to make modifications, clone the GitHub project first. You can choose whether to keep 
 your copy updated with any upstream changes.
 
+## Content Structure
+
+I use a content structure that is quite opinionated. I can't guarantee that you will like it but please do give it a go
+to see if you can live with it.
+
+Like many site structures, I assume that you have 2 basic types of actual content: `posts` and `pages`. 
+
+### Content sections
+
+This theme assumes the use of 6 content sections. You will need to create the matching folders under
+the `/content` folder. Each will have an `_index.md` file.
+
+1. **posts** - These are your standard blog posts. Use as expected. I use a permalink structure that 
+   puts posts under a URL of `/blog/:slug`.
+2. **categories** - You probably wont have anything other than an `_index.md` file in this folder.
+   The actual list of categories is generated automatically by Hugo. However, by including the folder
+   and an index file, you can provide both a menu (though you could do this via `config.toml` if preferred)
+   and some explanatory header text along with an SEO description.
+3. **tags** - as for categories.
+4. **about** - A (generally small) collection of pages such as ones about the site, about the site owner/author,
+   about the design. More importantly, you are likely to want to keep privacy, copyright and other legal statements here.
+   Keep anything you would like to see under an `about` menu here. Don't forget to add menu frontmatter options.
+5. **kb** - Knowledgebase - This section is for pages that are less volatile and less likely to age than your standard blog posts.
+   There is no hard and fast rule as to whether to use posts or the knowledgebase. You may wish to create sub-sections
+   in `kb` as I do, each covering different specialist areas.
+6. **projects** - This is a portfolio section. Use this for keeping track of projects you've worked on. It is entirely optional.
+
+Really, all of these sections are arbitrary and optional. However, you may occasionally find things in the theme that don't quite
+work as expected if you don't at least have `posts`, `about` and `kb`.
+
+You may have more sections as you wish. Simply add a new folder under the `/content` folder and include a `_index.md` file containing the appropriate menu
+entry and any fixed content you want appearing before the list of pages. The list of pages in the section is generated automatically.
+
+If you have any fixed content above the list, I recommend that you add a level 3 heading at the end of the index file (so it appears as the
+heading for the list of pages).
+
+### Other data types
+
+While `posts` and `pages` are the 2 default page (content) types, you can, of course, add others and also use the `/data` folder
+to create data-driven content. These are standard Hugo features and there is no special support built into this theme.
+
 ## File Layout
 
 You should use the following file layout when using this theme
