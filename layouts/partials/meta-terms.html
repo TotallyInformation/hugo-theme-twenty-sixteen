@@ -8,21 +8,27 @@
         {{/*<em class="far fa-folder-open"></em> */}}&#x1F4D6; <a href="/{{.Section | urlize }}">{{.Section | title}}</a>
     </span>
 {{- end -}}
-{{ with .Params.categories }} 
-     | <span title="Categories">{{/*<em class="fas fa-list-alt"></em> */}}&#x1F4CE; 
-    {{- $.Scratch.Delete "l1" -}}
-    {{- range $idx, $cat := . }} 
-        {{ $t1 := (printf "<a href='/categories/%s'>%s</a>" ($cat | urlize) $cat) }}
-        {{ $.Scratch.Add "l1" (slice $t1) }}
+ | <span title="Categories">{{/*<em class="fas fa-list-alt"></em> */}}&#x1F4CE; 
+    {{ if .Params.categories }} 
+        {{- range $cat := .Params.categories }} 
+            {{ $t1 := (printf "<a href='/categories/%s'>%s</a>" ($cat | urlize) $cat) }}
+            {{ $.Scratch.Add "l1" (slice $t1) }}
+        {{- end -}}
+        {{ delimit ($.Scratch.Get "l1") ", " }}
+        {{- $.Scratch.Delete "l1" -}}
+    {{- else -}}
+        None
     {{- end -}}
-    {{ delimit ($.Scratch.Get "l1") ", " }}</span>
-{{- end -}}
-{{ with .Params.tags }} 
-     | <span title="Tags">{{/*<em class="fas fa-tags"></em> */}}&#x1F516; 
-    {{ $.Scratch.Delete "l2" }}
-    {{- range $idx, $tag := . }} 
-        {{ $t2 := (printf "<span><a href='/tags/%s'>%s</a></span>" ($tag | urlize) $tag) }}
-        {{ $.Scratch.Add "l2" (slice $t2) }}
+</span>
+ | <span title="Tags">{{/*<em class="fas fa-tags"></em> */}}&#x1F516; 
+    {{- if .Params.tags -}} 
+        {{- range $tag := .Params.tags }} 
+            {{ $t2 := (printf "<span><a href='/tags/%s'>%s</a></span>" ($tag | urlize) $tag) }}
+            {{ $.Scratch.Add "l2" (slice $t2) }}
+        {{- end -}}
+        {{ delimit ($.Scratch.Get "l2") ", " }}
+        {{ $.Scratch.Delete "l2" }}
+    {{- else -}}
+        None
     {{- end -}}
-    {{ delimit ($.Scratch.Get "l2") ", " }}</span>
-{{- end -}}
+</span>
