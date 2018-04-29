@@ -9,18 +9,19 @@
     </span>
 {{- end -}}
  | <span title="Categories">{{/*<em class="fas fa-list-alt"></em> */}}&#x1F4CE; 
+    {{- $.Scratch.Set "l1" slice -}}
     {{ if .Params.categories }} 
         {{- range $cat := .Params.categories }} 
             {{ $t1 := (printf "<a href='/categories/%s'>%s</a>" ($cat | urlize) $cat) }}
             {{ $.Scratch.Add "l1" (slice $t1) }}
         {{- end -}}
         {{ delimit ($.Scratch.Get "l1") ", " }}
-        {{- $.Scratch.Delete "l1" -}}
     {{- else -}}
         None
     {{- end -}}
 </span>
  | <span title="Tags">{{/*<em class="fas fa-tags"></em> */}}&#x1F516; 
+    {{- $.Scratch.Set "l1" slice -}}
     {{- if .Params.tags -}} 
         {{- range $tag := .Params.tags }} 
             {{ $t2 := (printf "<span><a href='/tags/%s'>%s</a></span>" ($tag | urlize) $tag) }}
