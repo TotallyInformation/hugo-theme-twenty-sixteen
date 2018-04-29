@@ -21,7 +21,7 @@
     {{- end -}}
 </span>
  | <span title="Tags">{{/*<em class="fas fa-tags"></em> */}}&#x1F516; 
-    {{- $.Scratch.Set "l1" slice -}}
+    {{- $.Scratch.Set "l2" slice -}}
     {{- if .Params.tags -}} 
         {{- range $tag := .Params.tags }} 
             {{ $t2 := (printf "<span><a href='/tags/%s'>%s</a></span>" ($tag | urlize) $tag) }}
