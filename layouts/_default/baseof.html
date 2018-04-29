@@ -1,6 +1,9 @@
 {{/* Root template. Wraps around everything else */}}
 <!DOCTYPE html>
-<html lang="{{ $.Site.LanguageCode | default "en" }}">
+<html lang="{{ $.Site.LanguageCode | default "en" }}"
+      prefix="dc: http://purl.org/dc/terms/#
+              og: http://ogp.me/ns#
+              twitter: https://dev.twitter.com/cards/markup#">
 
 <head>
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
