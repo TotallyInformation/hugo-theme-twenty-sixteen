@@ -8,17 +8,17 @@
         {{ partial "meta-data.html" . }}
     </header>
 
-    {{- if .Params.Description }}
+    {{- if .Params.Description -}}
     <div class="space-below" title="Page description"><blockquote>
         {{ .Params.Description | markdownify }}
     </blockquote></div>
     {{end}}
 
-    {{- if .Content }}
+    {{- with .Content -}}
     <div>
-        {{ .Content }}
+        {{ .  | replaceRE "(<h[1-9] id=\"([^\"]+)\".+)(</h[1-9]+>)" `${1}<a href="#${2}" class="hanchor" ariaLabel="Anchor"> 🔗&#xFE0E;</a> ${3}` | safeHTML }}
     </div>
-    {{end}}
+    {{- end -}}
     
     {{- if .IsTranslated -}}
     <h4>{{ i18n "translations" }}</h4>
@@ -54,5 +54,4 @@
     </footer>
     {{- end -}}
 </article>
-<!-- /.blog-post -->
 {{- end -}}

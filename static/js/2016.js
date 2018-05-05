@@ -1,13 +1,8 @@
-function addAnchor(element) {
-    // NB: Have to add the Variation Selector after the link icon if we want it coloured via the CSS color attib
-    element.insertAdjacentHTML('beforeend', `<a href="#${element.id}" class="hanchor" ariaLabel="Anchor"> 🔗&#xFE0E;</a>` )
-}
-
+/** Theme JavaScript for the Twenty-Sixteen Hugo theme
+ * Apache 2.0 Licensed. See the theme's LICENSE file for details.
+ * Author: Julian Knight, Totally Information, May 2018
+ */
 document.addEventListener('DOMContentLoaded', function () {
-
-    // Add anchor links to all headings
-    var headers = document.querySelectorAll('article h1[id], article h2[id], article h3[id], article h4[id]')
-    if (headers) headers.forEach(addAnchor)
 
     // Get all "navbar-burger" elements
     var $navbarBurgers = Array.prototype.slice.call(document.querySelectorAll('.navbar-burger'), 0);
