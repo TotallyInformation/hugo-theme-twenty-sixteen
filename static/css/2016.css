@@ -4,6 +4,7 @@ border-s { border: solid silver 1px }
 .space-above { margin-top: 1em; }
 .follow-me { padding-right:0.25em; }
 .hidden { display: none; }
+.has-space-right { margin-right: 1em; }
 
 input:invalid {
     border: 1px solid red;
