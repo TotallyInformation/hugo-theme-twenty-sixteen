@@ -1,4 +1,9 @@
-{{/* Override the Hugo default as that only shows a summary of the post, not the whole article which is what most people really want */}}
+{{/***
+   * Override the Hugo RSS feed default as that only shows a summary of the post, 
+   * not the whole article which is what most people really want.
+   * Includes the page .Description as well as the .Content as this typically
+   * contains different text.
+   ***/}}
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>{{ if eq  .Title  .Site.Title }}{{ .Site.Title }}{{ else }}{{ with .Title }}{{.}} on {{ end }}{{ .Site.Title }}{{ end }}</title>
@@ -21,7 +26,8 @@
       {{ with .Site.Author.email }}<author>{{.}}{{ with $.Site.Author.name }} ({{.}}){{end}}</author>{{end}}
       <guid>{{ .Permalink }}</guid>
       {{/* JK: 2018-04-08 Change .Summary to .Content to get full text */}}
-      <description>{{ .Content | html }}</description>
+      {{/* JK: 2018-05-08 Add .description to content */}}
+      <description><div>{{ .Description | html }}</div><div>{{ .Content | html }}</div></description>
       {{/* JK: 2018-04-08 Add post author */}}
       <author>{{ .Params.Author | default .Site.Params.author }}</author>
       {{- range .Params.categories -}}{{/* JK: 2018-04-08 Add category list */}}
