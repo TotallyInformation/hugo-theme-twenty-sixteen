@@ -6,8 +6,9 @@ border-s { border: solid silver 1px }
 .hidden { display: none; }
 .has-space-right { margin-right: 1em; }
 
-input:invalid {
+input:invalid, textarea:invalid {
     border: 1px solid red;
+    background-color: rgba(255, 127, 80, 0.05);
 }
   
 input:valid {
