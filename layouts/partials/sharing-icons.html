@@ -1,4 +1,4 @@
-{{/* Renders a row of icons for liking the page on common social following sites 
+{{/* Renders a row of icons for liking the page on common social following sites
    * @see https://www.savjee.be/2015/01/Creating-static-social-share-buttons/
    * @see http://www.thelinuxrain.com/articles/the-importance-of-static-social-media-buttons
    */}}
@@ -6,9 +6,17 @@
 {{ $link := .Permalink }}
 {{ $desc := (htmlEscape .Description) }}
 {{- if $.Site.Params.sharingicons -}}
-    Share this: 
-    <a title="Tweet a link to this page" target="blank" rel="nofollow" 
-       href="http://twitter.com/share?url={{ $link }}&text={{ $pageTitle }}{{ with $.Site.Params.followtwitter }}&via={{ . }}{{ end }}">
+    Share/save this page using:
+    <a title="Save this page to Pocket" target="blank" rel="nofollow"
+       href="https://getpocket.com/save?url={{ $link }}&title={{ $pageTitle }}">
+        <em class="fab fa-get-pocket fa-3x fa-fw"></em>
+    </a>
+    <a title="Share this page via email" target="blank" rel="nofollow"
+       href="mailto:?subject={{ $pageTitle }}&body={{ $pageTitle }}%0A%0A{{ $desc }}%0A%0Avia {{ $link }}%0A%0">
+        <em class="fas fa-envelope-square fa-3x fa-fw"></em>
+    </a>
+    <a title="Tweet a link to this page" target="blank" rel="nofollow"
+       href="https://twitter.com/share?url={{ $link }}&text={{ $pageTitle }}{{ with $.Site.Params.followtwitter }}&via={{ . }}{{ end }}">
         <em class="fab fa-twitter-square fa-3x fa-fw"></em>
     </a>
     <a title="Share this page on Google+" class="googleplus" target="blank" rel="nofollow"
@@ -16,25 +24,15 @@
         <em class="fab fa-google-plus-square fa-3x fa-fw"></em>
     </a>
     <a title="Share this page on LinkedIn" target="blank" rel="nofollow"
-       href="http://www.linkedin.com/shareArticle?mini=true&url={{ $link }}&title={{ $pageTitle }}&source={{ $.Site.BaseURL }}&summary={{ $desc }}">
+       href="https://www.linkedin.com/shareArticle?mini=true&url={{ $link }}&title={{ $pageTitle }}&source={{ $.Site.BaseURL }}&summary={{ $desc }}">
         <em class="fab fa-linkedin fa-3x fa-fw"></em>
     </a>
-
-    <a title="Save this page to Pocket" target="blank" rel="nofollow"
-       href="https://getpocket.com/save?url={{ $link }}&title={{ $pageTitle }}">
-        <em class="fab fa-get-pocket fa-3x fa-fw"></em>
-    </a>
     <a title="Share this page on Reddit" target="blank" rel="nofollow"
-       href="http://www.reddit.com/submit?url={{ $link }}&title={{ $pageTitle }}">
+       href="https://www.reddit.com/submit?url={{ $link }}&title={{ $pageTitle }}">
         <em class="fab fa-reddit fa-3x fa-fw"></em>
     </a>
-
     <a title="Share this page on Facebook"  target="blank" rel="nofollow"
        href="https://www.facebook.com/sharer/sharer.php?u={{ $link }}">
         <em class="fab fa-facebook-square fa-3x fa-fw"></em>
-    </a>
-    <a title="Share this page via email" target="blank" rel="nofollow"
-       href="mailto:?subject={{ $pageTitle }}&body={{ $pageTitle }}%0A%0A{{ $desc }}%0A%0Avia {{ $link }}%0A%0">
-        <em class="fas fa-envelope-square fa-3x fa-fw"></em>
     </a>
 {{- end -}}
