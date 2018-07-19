@@ -108,34 +108,7 @@
         {{- template "_internal/google_analytics_async.html" . -}}
     {{- end -}}
 
-    {{/* schema.org microdata: blog */}}
-    <script type="application/ld+json">
-        {
-            "@context": "http://schema.org",
-            "@type": "Blog",
-            "url": "{{ $.Site.BaseURL }}"
-        }
-    </script>
-    {{/* schema.org microdata: person (site owner) */}}
-    {{/* OPTIONAL: add the actual json to /data/siteownerld.json */}}
-    <script type="application/ld+json">
-        {{- with (readDir "data") -}}
-            {{- range $f := where . "Name" "eq" "siteauthorld.json" -}}
-                {{- $pf := (printf "%s%s" "data/" $f.Name) -}}
-                {{- readFile $pf | safeHTML -}}
-            {{- end -}}
-        {{- end -}}
-    </script>
-    {{/* schema.org microdata: organisation (site owner) */}}
-    {{/* OPTIONAL: Add the actual json to /data/siteorgld.json */}}
-    <script type="application/ld+json">
-        {{- with (readDir "data") -}}
-            {{- range $f := where . "Name" "eq" "siteorgld.json" -}}
-                {{- $pf := (printf "%s%s" "data/" $f.Name) -}}
-                {{- readFile $pf | safeHTML -}}
-            {{- end -}}
-        {{- end -}}
-    </script>
+    {{- partial "jsonld.html" . -}}
 
     {{- if (eq $.Site.Params.DebugConsole true) -}}
         {{- partial "debug-console.html" . -}}
