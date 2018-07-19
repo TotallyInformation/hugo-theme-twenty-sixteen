@@ -5,7 +5,7 @@
     {{- with .OutputFormats.Get "rss" -}}
         <a href="{{ .Permalink }}" title="Subscribe to the RSS Feed for this section">
             <i class="fas fa-rss-square fa-2x fa-fw" style="color:#ffa500"></i>
-        </a> 
+        </a>
     {{- end -}}
     {{- with $.Site.Params.followtwitter -}}<a href="https://twitter.com/{{.}}" title="My Twitter timeline" itemprop="sameAs">
         <i class="fab fa-twitter-square fa-2x fa-fw"></i>
@@ -25,11 +25,41 @@
     {{- with $.Site.Params.followse -}}<a href="https://stackexchange.com/users/{{.}}" title="My StackExchange profile" itemprop="sameAs">
         <i class="fab fa-stack-exchange fa-2x fa-fw"></i>
     </a>{{end}}
-    {{- with $.Site.Params.followabout -}}<a href="https://about.me/{{.}}" title="My About Me profile" itemprop="sameAs">
-        <span class="fa-layers fa-fw fa-2x" style="color:black">
-        <i class="fas fa-square"></i>
-        <span class="fa-layers-text fa-inverse" data-fa-transform="shrink-11.5" style="font-weight:900">ME</span>
-        </span>
-    </a>{{end}}
     </span>
+{{- end -}}
+{{- if $.Site.Params.sharingicons -}}
+  <div>
+  {{ $pageTitle := (htmlEscape .Title) }}
+  {{ $link := .Permalink }}
+  {{ $desc := (htmlEscape .Description) }}
+    Share/save this page using:<br /><span class="follow-me">
+    <a title="Save this page to Pocket" target="blank" rel="nofollow"
+       href="https://getpocket.com/save?url={{ $link }}&title={{ $pageTitle }}">
+        <em class="fab fa-get-pocket fa-2x fa-fw"></em>
+    </a>
+    <a title="Share this page via email" target="blank" rel="nofollow"
+       href="mailto:?subject={{ $pageTitle }}&body={{ $pageTitle }}%0A%0A{{ $desc }}%0A%0Avia {{ $link }}%0A%0">
+        <em class="fas fa-envelope-square fa-2x fa-fw"></em>
+    </a>
+    <a title="Tweet a link to this page" target="blank" rel="nofollow"
+       href="https://twitter.com/share?url={{ $link }}&text={{ $pageTitle }}{{ with $.Site.Params.followtwitter }}&via={{ . }}{{ end }}">
+        <em class="fab fa-twitter-square fa-2x fa-fw"></em>
+    </a>
+    <a title="Share this page on Google+" class="googleplus" target="blank" rel="nofollow"
+       href="https://plus.google.com/share?url={{ $link }}&title={{ $pageTitle }}">
+        <em class="fab fa-google-plus-square fa-2x fa-fw"></em>
+    </a>
+    <a title="Share this page on LinkedIn" target="blank" rel="nofollow"
+       href="https://www.linkedin.com/shareArticle?mini=true&url={{ $link }}&title={{ $pageTitle }}&source={{ $.Site.BaseURL }}&summary={{ $desc }}">
+        <em class="fab fa-linkedin fa-2x fa-fw"></em>
+    </a>
+    <a title="Share this page on Reddit" target="blank" rel="nofollow"
+       href="https://www.reddit.com/submit?url={{ $link }}&title={{ $pageTitle }}">
+        <em class="fab fa-reddit fa-2x fa-fw"></em>
+    </a>
+    <a title="Share this page on Facebook"  target="blank" rel="nofollow"
+       href="https://www.facebook.com/sharer/sharer.php?u={{ $link }}">
+        <em class="fab fa-facebook-square fa-2x fa-fw"></em>
+    </a></span>
+  </div>
 {{- end -}}
