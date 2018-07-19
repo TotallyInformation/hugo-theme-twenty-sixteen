@@ -1,0 +1,111 @@
+{{/*** Schema.org markup for a blog post ***/}}
+{{- if .IsPage -}}
+    {{- $tags := .Params.tags | default (slice) -}}
+    {{- $cats := .Params.categories | default (slice) -}}
+    {{- $numTags := len $tags -}}
+    {{- $numCats := len $cats -}}
+    {{- $both := (and (gt $numCats 0) (gt $numTags 0) ) -}}
+    {{- $either := (or (gt $numCats 0) (gt $numTags 0) ) -}}
+    <script type="application/ld+json">
+    {
+        "@context" : "http://schema.org",
+        "@type" : "BlogPosting",
+        "articleSection" : "{{ .Section }}",
+        "name" : "{{ .Title }}",
+        "headline" : "{{ .Title }}",
+        "description" : "{{ if .Description }}{{ .Description }}{{ else }}{{if .IsPage}}{{ .Summary }}{{ end }}{{ end }}",
+        "inLanguage" : "{{ .Site.LanguageCode }}",
+        "author" : {
+            "@type": "Person",
+            {{- with .Site.Params.authorJob -}}"jobTitle": "{{ . }}",{{- end }}
+            "name": "{{ .Params.author }}",
+            {{- with .Site.Params.authorWeb -}}"url": "{{ . }}",{{- end }}
+            "affiliation": "{{ .Site.Params.sitemeta.publisher.name }}",
+            "memberOf": "{{ .Site.Params.sitemeta.publisher.name }}",
+            {{- with .Site.Params.sitemeta.publisher.sameAs -}}
+                "sameAs": [
+                {{- range $i, $f := . -}}
+                    {{ if $i }}, {{ end }}"{{ $f }}"
+                {{- end -}}
+            ]{{- end -}}
+            {{- if .Site.Params.sitemeta.publisher.address -}},
+            "address": {
+                "@type": "PostalAddress",
+                "addressLocality": "{{.Site.Params.sitemeta.publisher.address.addressLocality}}",
+                "addressCountry": "{{.Site.Params.sitemeta.publisher.address.addressCountry}}"
+            }
+            {{- end }}
+        },
+        "creator" : "{{ .Params.author }}",
+        "accountablePerson" : "{{ .Params.author }}",
+        "copyrightHolder" : "{{ .Params.author }}",
+        "copyrightYear" : "{{ .Date.Format "2006" }}",
+        "datePublished": "{{ .PublishDate.Format "2006-01-02T15:04:05Z00:00" }}",
+        "dateModified" : "{{ .Lastmod.Format "2006-01-02T15:04:05Z00:00" }}",
+        "url" : "{{ .Permalink }}",
+        "mainEntityOfPage" : "{{ .Permalink }}",
+        {{ with .Params.images -}}"image" : [ {{ range $i, $e := . }}{{ if $i }}, {{ end }}"{{ $e | absURL }}"{{ end }} ],{{- end }}
+        {{ if $either -}}"keywords" : [ {{ range $i, $e := $cats }}{{ if $i }}, {{ end }}"{{ $e }}"{{ end }}{{if $both}}, {{end}}{{ range $i, $e := $tags }}{{ if $i }}, {{ end }}"{{ $e }}"{{ end }} ],{{- end }}
+        "wordCount" : "{{ .WordCount }}",
+        {{ with .Site.Params.sitemeta.publisher -}}
+        "publisher": {
+            "@type": "Organization",
+            {{ with .logo -}}
+            "logo": {
+                "@type": "ImageObject",
+                "url": "{{ .url | absURL }}",
+                "width": {{ .width }},
+                "height": {{ .height }}
+            },
+            {{- end }}
+            {{ with .url -}}"url": "{{ . }}",{{- end }}
+            {{ with .founder -}}"founder": "{{ . }}",{{- end }}
+            {{ with .sameas -}}"sameAs": [{{ range $i,$e := . }}{{ if $i }}, {{ end }}"{{ $e }}"{{ end }}],{{- end }}
+            {{ with .address -}}"address": {
+                {{ with .addresslocality -}}"addressLocality": "{{ . }}",{{- end }}
+                {{ with .addresscountry -}}"addressCountry": "{{ . }}",{{- end }}
+                "@type": "PostalAddress"
+            },{{- end }}
+            "name": "{{ .name }}"
+        }
+        {{- end }}
+    }
+    </script>
+{{- else if .IsHome -}}
+    <script type="application/ld+json">
+        {
+            "@context": "http://schema.org",
+            "@type": "Blog",
+            "url": "{{ $.Site.BaseURL }}"
+        }
+    </script>
+{{- else -}}
+    {{/* schema.org microdata: blog */}}
+    <script type="application/ld+json">
+        {
+            "@context": "http://schema.org",
+            "@type": "Blog",
+            "url": "{{ $.Site.BaseURL }}"
+        }
+    </script>
+    {{/* schema.org microdata: person (site owner) */}}
+    {{/* OPTIONAL: add the actual json to /data/siteownerld.json */}}
+    <script type="application/ld+json">
+        {{- with (readDir "data") -}}
+            {{- range $f := where . "Name" "eq" "siteauthorld.json" -}}
+                {{- $pf := (printf "%s%s" "data/" $f.Name) -}}
+                {{- readFile $pf | safeHTML -}}
+            {{- end -}}
+        {{- end -}}
+    </script>
+    {{/* schema.org microdata: organisation (site owner) */}}
+    {{/* OPTIONAL: Add the actual json to /data/siteorgld.json */}}
+    <script type="application/ld+json">
+        {{- with (readDir "data") -}}
+            {{- range $f := where . "Name" "eq" "siteorgld.json" -}}
+                {{- $pf := (printf "%s%s" "data/" $f.Name) -}}
+                {{- readFile $pf | safeHTML -}}
+            {{- end -}}
+        {{- end -}}
+    </script>
+{{- end -}}
