@@ -19,7 +19,7 @@
       {{ . | replaceRE "(<h[1-9] id=\"([^\"]+)\".+)(</h[1-9]+>)" `${1}<a href="#${2}" class="hanchor" ariaLabel="Anchor"> 🔗&#xFE0E;</a> ${3}` | safeHTML }}
     </div>
     {{- end -}}
-    
+
     {{- if .IsTranslated -}}
     <h4>{{ i18n "translations" }}</h4>
     <ul>
@@ -41,17 +41,17 @@
         {{- end -}}
         <div class="is-clearfix"></div>
     </div>
-    
-    {{- if or (ne ($.Param "sharingicons") false) (.Site.DisqusShortname) -}}
+
+    {{/*{{- if or (ne ($.Param "sharingicons") false) (.Site.DisqusShortname) -}}*/}}
     <hr>
     <footer>
-        {{- if (ne ($.Param "sharingicons") false) -}}
+        {{/*{{- if (ne ($.Param "sharingicons") false) -}}
             {{- partial "sharing-icons.html" . -}}
-        {{- end -}} 
+        {{- end -}} */}}
         {{- if and (.Site.DisqusShortname) (ne .Params.comments false) -}}
             {{- template "_internal/disqus.html" . -}}
         {{- end -}}
     </footer>
-    {{- end -}}
+    {{/*{{- end -}}*/}}
 </article>
 {{- end -}}
