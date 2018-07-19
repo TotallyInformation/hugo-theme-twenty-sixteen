@@ -24,6 +24,12 @@ copyright = "This work is licensed under a Creative Commons Attribution-ShareAli
 # Disable comments for any individual post by adding "comments: false" in its frontmatter
 #disqusShortname = ""
 
+# Code Highlighting (uses Chroma but shares old config names for compatibility)
+pygmentsCodefences = true
+pygmentsUseClasses = true # Use `hugo gen chromastyles --style=monokai > static/css/syntax.css` and include in baseof.html
+pygmentsCodefencesGuessSyntax = true
+#pygmentsStyle = "monokai"
+
 # -- Don't put individual entries below here or group entries above here -- #
 
 # Template Author
@@ -74,10 +80,23 @@ copyright = "This work is licensed under a Creative Commons Attribution-ShareAli
     pattern = "2006"
 
 [params]
-    # If false, all of blog post will appear on front page (and in pagination)
-    truncate = true
+    description = "Twenty-Sixteen Theme by Julian Knight (Totally Information)"
+
+    # Default page editor's name (appears in meta tags and under posts)
+    author = "Anonymous"
+
+    # Google analytics code - remove if you do not have/want Google Analytics - needs JavaScript
+    #googleAnalytics = ""
 
     # --- TwentySixteen Theme Parameters --- #
+
+    # If false, all of blog post will appear on front page (and in pagination)
+    truncate = true # not yet working
+
+    # Set to true to output some helpful info - helps understand about Kind, Section, Type, etc.
+    debug = false # Debug outputs to web page
+    debugConsole = false # Debug outputs to browser console only
+
     # What elements to exclude from the navigation menu?
     menuExclude = ["Posts", "Pages"]
 
@@ -91,17 +110,12 @@ copyright = "This work is licensed under a Creative Commons Attribution-ShareAli
     # Twitter User - if set will show Twitter timeline in sidebar
     # twitterUser = "TotallyInformation"
     # Number of recent posts to show (defaults to 5)
-    twitterPosts = 5
+    #twitterPosts = 5
     # Width & height in pixels (defaults to the width of the sidebar, expands to height of tweet list)
     # twitterWidth = 220
     # twitterHeight = 600
     # Twitter widget theme (See https://dev.twitter.com/web/embedded-timelines )
-    twitterTheme = "dark" # dark/light/transparent, default dark
-    # Width & height in pixels (defaults to the width of the sidebar, expands to height of tweet list)
-    # twitterWidth = 220
-    # twitterHeight = 600
-    # Twitter widget theme (See https://dev.twitter.com/web/embedded-timelines )
-    # twitterTheme = "light" # dark/light/transparent, default dark
+    # twitterTheme = "dark" # dark/light/transparent, default dark
     # twitterChrome = "" # default "nofooter noborders"
 
     # Follow icons - NB: includes showing the RSS feed icon
@@ -112,5 +126,27 @@ copyright = "This work is licensed under a Creative Commons Attribution-ShareAli
     #followli = "" # LinkedIn https://www.linkedin.com/in/<<followli>>/
     #followgh = "" # GitHub https://github.com/<<followgh>>
     #followse = "" # Stack Exchange https://stackexchange.com/users/<<followse>> NB: the user number not name
-    #followabout = "" # About Me https://about.me/<<followabout>>
-    # Other possibilities not yet implemented: codepen, keybase, flickr, instagram, email, pintrest    
+    # Other possibilities not yet implemented: codepen, keybase, flickr, instagram, email, pintrest
+
+    # Flairs
+    #seflair = "#######" # Stack Exchange https://stackexchange.com/users/#######/name
+    #ptpflair = false # https://www.protruthpledge.org/
+
+[params.sitemeta]
+    # schema.org metadata
+    [params.sitemeta.publisher]
+        # Publisher is required for "@type" : "BlogPosting"
+        name = "My Org"  # Organization name (maybe use owner name if no org or comment out)
+        #url  = "https://www.sample.com" # Org url (optional)
+        #founder = "My Name" # Name of the founder (optional)
+        #sameAs  = [  ] # List of other URL's related to this org (optional)
+    #[params.sitemeta.publisher.address]
+        # For privacy, only includes locality and country (optional)
+        #addressLocality = "Sheffield"
+        #addressCountry = "GB"
+    #[params.sitemeta.publisher.logo]
+        # Logo is included in the Publisher section if defined here (optional) - comment out to ignore
+        #url    = "/images/MyOrg-600x60-whitebg.png"
+        # NOTE that Google demand org logos to be 600x60 px
+        #width  = "600"
+        #height = "60"
