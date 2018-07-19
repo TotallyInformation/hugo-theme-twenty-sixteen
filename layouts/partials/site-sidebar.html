@@ -7,16 +7,32 @@
             {{- partial "follow-me-icons.html" . -}}
         </div>
     {{- end -}}
+
+    {{- partial "related-posts.html" . -}}
+
     {{/* Stack Exchange image */}}
     {{- with $.Site.Params.seflair -}}
     <div class="space-below">
         <a href="https://stackexchange.com/users/{{.}}">
             <img src="https://stackexchange.com/users/flair/{{.}}.png"
-                alt="Stack Exchange flair image" 
+                alt="Stack Exchange flair image"
                 title="Link to my profile on Stack Exchange, a network of free, community-driven Q&amp;A sites" />
         </a>
     </div>
     {{- end -}}
+
+    {{- with $.Site.Params.ptpflair -}}
+    <div class="columns">
+      <div class="column is-one-third">
+        <a href="http://ProTruthPledge.org">
+            <img style="width: 80px; height: 80px;"
+                    src="https://www.protruthpledge.org/hotlink-ok/ptpBacked.gif">
+        </a>
+      </div>
+      <div class="column">I signed the <a href="http://ProTruthPledge.org">Pro-Truth Pledge:</a> please hold me accountable.</div>
+    </div>
+    {{- end -}}
+
     {{/* Tag Cloud */}}
 
     {{/* No more twitter timeline for now - too slow and causing GDPR issues }}
@@ -25,8 +41,6 @@
     {{- end -}}
     {{ */}}
 
-    {{- partial "related-posts.html" . -}}
-    
     {{- block "sidebar-bottom" . -}}
     {{- end -}}
 </div>
