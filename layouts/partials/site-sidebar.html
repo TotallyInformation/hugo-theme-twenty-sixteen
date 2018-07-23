@@ -1,47 +1,48 @@
 {{ $sbWidth := $.Site.Params.sidebarWidth | default 3 }}
 {{- if $.Site.Params.sidebarSide }}
-<div class="column is-{{ $sbWidth }} section">
-    {{- if .Site.Params.Debug -}}{{- partial "debug-short-sidebar.html" . -}}{{- end -}}
-    {{- block "sidebar-top" . -}}
-        <div class="space-below">{{/* Output link to RSS feed if available for this page */}}
-            {{- partial "follow-me-icons.html" . -}}
-        </div>
-    {{- end -}}
+    <div class="column is-{{ $sbWidth }} section">
+        {{- if .Site.Params.Debug -}}
+            {{- partial "debug-short-sidebar.html" . -}}
+        {{- end -}}
 
-    {{- partial "related-posts.html" . -}}
+        {{- block "sidebar-top" . -}}{{- end -}}
 
-    {{/* Stack Exchange image */}}
-    {{- with $.Site.Params.seflair -}}
-    <div class="space-below">
-        <a href="https://stackexchange.com/users/{{.}}">
-            <img src="https://stackexchange.com/users/flair/{{.}}.png"
-                alt="Stack Exchange flair image"
-                title="Link to my profile on Stack Exchange, a network of free, community-driven Q&amp;A sites" />
-        </a>
+        {{- partial "sharing-icons.html" . -}}
+        {{- partial "related-posts.html" . -}}
+        {{- partial "follow-me-icons.html" . -}}
+
+        {{/* Stack Exchange image */}}
+        {{- with $.Site.Params.seflair -}}
+            <div class="space-below">
+                <a href="https://stackexchange.com/users/{{.}}">
+                    <img src="https://stackexchange.com/users/flair/{{.}}.png"
+                        alt="Stack Exchange flair image"
+                        title="Link to my profile on Stack Exchange, a network of free, community-driven Q&amp;A sites" />
+                </a>
+            </div>
+        {{- end -}}
+
+        {{- with $.Site.Params.ptpflair -}}
+            <div class="columns">
+                <div class="column is-one-third">
+                    <a href="http://ProTruthPledge.org">
+                        <img style="width: 80px; height: 80px;"
+                                alt="Pro Truth Pledge icon"
+                                src="/images/ptpBacked.gif">
+                    </a>
+                </div>
+                <div class="column">I signed the <a href="http://ProTruthPledge.org">Pro-Truth Pledge:</a> please hold me accountable.</div>
+            </div>
+        {{- end -}}
+
+        {{/* Tag Cloud */}}
+
+        {{/* No more twitter timeline for now - too slow and causing GDPR issues }}
+        {{- if $.Site.Params.twitterUser -}}
+        {{- partial "twitter-timeline.html" . -}}
+        {{- end -}}
+        {{ */}}
+
+        {{- block "sidebar-bottom" . -}}{{- end -}}
     </div>
-    {{- end -}}
-
-    {{- with $.Site.Params.ptpflair -}}
-    <div class="columns">
-      <div class="column is-one-third">
-        <a href="http://ProTruthPledge.org">
-            <img style="width: 80px; height: 80px;"
-                    src="https://www.protruthpledge.org/hotlink-ok/ptpBacked.gif">
-        </a>
-      </div>
-      <div class="column">I signed the <a href="http://ProTruthPledge.org">Pro-Truth Pledge:</a> please hold me accountable.</div>
-    </div>
-    {{- end -}}
-
-    {{/* Tag Cloud */}}
-
-    {{/* No more twitter timeline for now - too slow and causing GDPR issues }}
-    {{- if $.Site.Params.twitterUser -}}
-    {{- partial "twitter-timeline.html" . -}}
-    {{- end -}}
-    {{ */}}
-
-    {{- block "sidebar-bottom" . -}}
-    {{- end -}}
-</div>
 {{- end -}}
