@@ -70,8 +70,8 @@
     {{- $css2016 := resources.Get "css/2016.css" -}}
     {{- $syntax := resources.Get "css/syntax.css" | minify | fingerprint -}}
     {{- $styles := (slice $bulmacss $css2016) | resources.Concat "css/bundle.css" | minify | fingerprint }}
-    <link rel="stylesheet" href="{{ $styles.Permalink }}" integrity="{{ $styles.Data.Integrity }}">
-    <link rel="stylesheet" href="{{ $syntax.Permalink }}" integrity="{{ $syntax.Data.Integrity }}">
+    <link rel="stylesheet" href="{{ $styles.Permalink }}" integrity="{{ $styles.Data.Integrity }}" crossorigin="anonymous">
+    <link rel="stylesheet" href="{{ $syntax.Permalink }}" integrity="{{ $syntax.Data.Integrity }}" crossorigin="anonymous">
 
     {{- block "extra-styles-head" . }}{{end}}
     {{- if .Params.extraStyle }}{{ range .Params.extraStyle }}
@@ -103,7 +103,7 @@
         <link rel="stylesheet" href="{{ . }}" />
     {{- end -}}{{- end -}}
     {{ $js := resources.Get "js/2016.js" | resources.Minify | resources.Fingerprint }}
-    <script src="{{ $js.Permalink }}" integrity="{{ $js.Data.Integrity }}"></script>
+    <script src="{{ $js.Permalink }}" integrity="{{ $js.Data.Integrity }}" crossorigin="anonymous"></script>
     {{- $e := (getenv "HUGO_ENV") | (getenv "ENVIRONMENT") | default .Site.Params.env | default "DEV" -}}
     {{/* - if eq $e "production" - */}}
     {{- if eq (getenv "HUGO_ENV") "production" | or (eq .Site.Params.env "production")  }}
