@@ -8,7 +8,7 @@
 <head>
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta charset="utf-8">
-    {{/* NOTE: the Sites title, and if there is a page title, that is set too 
+    {{/* NOTE: the Sites title, and if there is a page title, that is set too
          Added SEO, "site.title | page title" for home, "page title | site title" for everything else
       */}}
     <title>{{ block "title" . -}}
@@ -51,7 +51,7 @@
     {{- if eq (getenv "HUGO_ENV") "production" | or (eq .Site.Params.env "production")  }}
         <META NAME="ROBOTS" CONTENT="INDEX, FOLLOW">
     {{- else }}
-        <META NAME="ROBOTS" CONTENT="NOINDEX, NOFOLLOW"> 
+        <META NAME="ROBOTS" CONTENT="NOINDEX, NOFOLLOW">
     {{end}}
     <meta name="description" content="{{ with .Description }}{{ . }}{{ else }}{{if .IsPage}}{{ .Summary }}{{ else }}{{ with .Site.Params.description }}{{ . }}{{ end }}{{ end }}{{ end }}" />
     {{- if .RSSLink }}
@@ -67,7 +67,8 @@
 
     {{/* <link rel="stylesheet" href="https://unpkg.com/purecss@1.0.0/build/pure-min.css" integrity="sha384-nn4HPE8lTHyVtfCBi5yW9d20FjT8BJwUXyWZT9InLYax14RDjBj46LmSztkmNP9w" crossorigin="anonymous"> */}}
     <link rel="stylesheet" href="/css/syntax.css" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.1/css/bulma.min.css" crossorigin="anonymous" />
+    {{/*<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.1/css/bulma.min.css" crossorigin="anonymous" />*/}}
+    <link rel="stylesheet" href="/css/bulma.min.css" />
     {{/* <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.10/css/all.css" integrity="sha384-+d0P83n9kaQMCwj8F4RJB66tzIwOKmrdb46+porD/OvrJ+37WqIM7UoBtwHO6Nlg" crossorigin="anonymous">*/}}
     <link rel="stylesheet" href="/css/2016.css" />
 
@@ -77,9 +78,9 @@
         <link rel="stylesheet" href="{{ . }}" />
     {{end}}{{end}}
 
-    <script defer src="https://use.fontawesome.com/releases/v5.0.9/js/all.js" integrity="sha384-8iPTk2s/jMVj81dnzb/iFR2sdA7u06vHJyyLlAd4snFpCl/SnyUjRrbdJsw1pGIl" crossorigin="anonymous"></script>
+    {{/* <script defer src="https://use.fontawesome.com/releases/v5.0.9/js/all.js" integrity="sha384-8iPTk2s/jMVj81dnzb/iFR2sdA7u06vHJyyLlAd4snFpCl/SnyUjRrbdJsw1pGIl" crossorigin="anonymous"></script>*/}}
     {{- block "extra-scripts-head" . }}{{end}}
-    
+
 </head>
 
 <body>
