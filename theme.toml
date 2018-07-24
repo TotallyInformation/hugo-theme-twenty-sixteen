@@ -104,6 +104,9 @@ pygmentsCodefencesGuessSyntax = true
     sidebarSide = "right" # left/right or comment out to disable sidebar
     sidebarWidth = 3      # Width as # of logical columns (n/12 ths), default = 3
 
+    # Google Site Search - Search engine ID - comment out to disable
+    #gsearch = ""
+
     # Do we want social sharing icons showing? Default false
     # sharingicons = true
 

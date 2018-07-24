@@ -1,0 +1,19 @@
+{{/* Google Site Search - https://cse.google.com */}}
+{{- with $.Site.Params.gsearch -}}
+<script>
+  (function() {
+    var cx = '{{ . }}';
+    var gcse = document.createElement('script');
+    gcse.type = 'text/javascript';
+    gcse.async = true;
+    gcse.src = 'https://cse.google.com/cse.js?cx=' + cx;
+    var s = document.getElementsByTagName('script')[0];
+    s.parentNode.insertBefore(gcse, s);
+  })();
+</script>
+
+<div class="gcse-searchbox"
+  data-enableHistory="true" data-personalizedAds="false" data-enableAutoComplete="true"
+  autoCompleteMaxCompletions="5" autoCompleteMatchType='any'></div>
+<div class="gcse-searchresults"></div>
+{{- end -}}
