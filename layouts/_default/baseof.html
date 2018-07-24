@@ -4,7 +4,6 @@
       prefix="dc: http://purl.org/dc/terms/#
               og: http://ogp.me/ns#
               twitter: https://dev.twitter.com/cards/markup#">
-
 <head>
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta charset="utf-8">
@@ -81,10 +80,7 @@
 
     {{/* <script defer src="https://use.fontawesome.com/releases/v5.0.9/js/all.js" integrity="sha384-8iPTk2s/jMVj81dnzb/iFR2sdA7u06vHJyyLlAd4snFpCl/SnyUjRrbdJsw1pGIl" crossorigin="anonymous"></script>*/}}
     {{- block "extra-scripts-head" . }}{{end}}
-
-</head>
-
-<body>
+</head><body>
     <section class="section container">
         {{ partial "site-menu.html" . }}
         {{ partial "site-header.html" . }}
