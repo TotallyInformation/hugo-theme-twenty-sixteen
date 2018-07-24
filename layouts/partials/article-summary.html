@@ -13,6 +13,6 @@
     </div>
     <div class="column">
         <h3><a href="{{ .Permalink }}">{{ .Title | default .URL }}</a></h3>
-        <p>{{ .Description | default .Summary }}</p>
+        <p>{{ .Description | default .Summary | markdownify }}</p>
     </div>
 </div>
