@@ -5,6 +5,8 @@ border-s { border: solid silver 1px }
 .follow-me { padding-right:0.25em; }
 .hidden { display: none; }
 .has-space-right { margin-right: 1em; }
+.featured-img { max-width: 50%; }
+.featured-img-small { max-width: 20%; }
 
 input:invalid, textarea:invalid {
     border: 1px solid red;

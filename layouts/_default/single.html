@@ -5,14 +5,21 @@
         <h1 class="" title="{{.Kind}}">
             {{ .Title | markdownify }}
         </h1>
-        {{ partial "meta-data.html" . }}
-    </header>
 
-    {{- if .Params.Description -}}
-    <div class="space-below" title="Page description"><blockquote>
-        {{ .Params.Description | markdownify }}
-    </blockquote></div>
-    {{end}}
+        {{ partial "meta-data.html" . }}
+
+        {{- if .Params.Description -}}
+        <div class="space-below" title="Page description"><blockquote>
+            {{ .Params.Description | markdownify }}
+        </blockquote></div>
+        {{end}}
+
+        {{ with .Params.images }}{{ range first 1 . }}
+            <div class="box is-pulled-left has-space-right featured-img">
+                <img class="" src="{{ . }}" alt="{{ . }}">
+            </div>
+        {{- end }}{{ end }}
+    </header>
 
     {{- with .Content -}}
     <div itemid="articleBody">
