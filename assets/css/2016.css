@@ -20,6 +20,18 @@ input:valid {
 .hanchor { font-size: 100%; visibility: hidden; color:silver;}
 h1:hover a, h2:hover a, h3:hover a, h4:hover a { visibility: visible}
 
+/* Fix max width of syntax highlight box */
+.highlight { max-width:95%; width: 95% }
+@media screen and (min-width: 1088px) {
+    .highlight { max-width:960px; width: 960px }
+}
+@media screen and (min-width: 1280px) {
+    .highlight { max-width:1152px; width: 1152px }
+}
+@media screen and (min-width: 1472px) {
+    .highlight { max-width:1344px; width: 1344px }
+}
+
 kbd {
     font-family: Consolas, "Lucida Console", monospace;
     display: inline-block;
