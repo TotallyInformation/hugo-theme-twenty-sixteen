@@ -21,15 +21,18 @@ input:valid {
 h1:hover a, h2:hover a, h3:hover a, h4:hover a { visibility: visible}
 
 /* Fix max width of syntax highlight box */
-.highlight { max-width:95%; width: 95% }
+.highlight { max-width:95%; width: 95%;}
+@media screen and (min-width: 769px) {
+    .highlight { max-width:95%; width: 95% }
+}
 @media screen and (min-width: 1088px) {
-    .highlight { max-width:960px; width: 960px }
+    .highlight { max-width:678px; width: 678px }
 }
 @media screen and (min-width: 1280px) {
-    .highlight { max-width:1152px; width: 1152px }
+    .highlight { max-width:822px; width: 822px; }
 }
 @media screen and (min-width: 1472px) {
-    .highlight { max-width:1344px; width: 1344px }
+    .highlight { max-width:960px; width: 960px; }
 }
 
 kbd {
