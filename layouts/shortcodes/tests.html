@@ -28,9 +28,9 @@
 
 <h2><a href="https://gohugo.io/variables/hugo/">Hugo Variables</a></h2>
 <dl>
-    <dt>.Page.Hugo.Version:</dt><dd>{{ .Page.Hugo.Version }}</dd>
-    <dt>.Page.Hugo.BuildDate:</dt><dd>{{ .Page.Hugo.BuildDate }}</dd>
-    <dt>.Page.Hugo.CommitHash:</dt><dd>{{ .Page.Hugo.CommitHash }}</dd>
+    <dt>hugo.Version:</dt><dd>{{ hugo.Version }}</dd>
+    <dt>hugo.BuildDate:</dt><dd>{{ hugo.BuildDate }}</dd>
+    <dt>hugo.CommitHash:</dt><dd>{{ hugo.CommitHash }}</dd>
 </dl>
 
 {{ partial "debug-site-authors.html" . }}

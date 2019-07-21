@@ -12,7 +12,7 @@
         {{ partial "meta-terms.html" . }}
     </div>
     <div class="column">
-        <h3><a href="{{ .Permalink }}">{{ .Title | default .URL }}</a></h3>
+        <h3><a href="{{ .Permalink }}">{{ .Title | default .RelPermalink }}</a></h3>
         {{ with .Params.images }}{{ range first 1 . -}}
             <div class="is-pulled-right featured-img-small">
                 <img class="" src="{{ . }}" alt="{{ . }}">
