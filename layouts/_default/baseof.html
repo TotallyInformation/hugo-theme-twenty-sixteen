@@ -99,18 +99,17 @@
         <link rel="stylesheet" href="{{ . }}" />
     {{- end -}}{{- end -}}
     {{ $js := resources.Get "js/2016.js" | resources.Minify | resources.Fingerprint }}
+
     <script src="{{ $js.Permalink }}" integrity="{{ $js.Data.Integrity }}" crossorigin="anonymous"></script>
+
     {{- $e := (getenv "HUGO_ENV") | (getenv "ENVIRONMENT") | default .Site.Params.env | default "DEV" -}}
-    {{/* - if eq $e "production" - */}}
-    {{- if eq (getenv "HUGO_ENV") "production" | or (eq .Site.Params.env "production")  }}
-        <!-- production only -->
-        {{- template "_internal/google_analytics_async.html" . -}}
-    {{- end -}}
 
     {{- partial "jsonld.html" . -}}
 
+    {{/* WARNING: Will trigger CSP failure - requires 'unsafe-inline'
     {{- if (eq $.Site.Params.DebugConsole true) -}}
         {{- partial "debug-console.html" . -}}
     {{- end -}}
+    */}}
 </body>
 </html>
