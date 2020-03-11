@@ -80,10 +80,16 @@
 
     {{/* <script defer src="https://use.fontawesome.com/releases/v5.0.9/js/all.js" integrity="sha384-8iPTk2s/jMVj81dnzb/iFR2sdA7u06vHJyyLlAd4snFpCl/SnyUjRrbdJsw1pGIl" crossorigin="anonymous"></script>*/}}
     {{- block "extra-scripts-head" . }}{{end}}
-</head><body>
+</head><body class="">
+    <section class = "hero">
+        <div class = "hero-body">
+           <div class = "container">
+           {{ partial "site-menu.html" . }}
+           {{ partial "site-header.html" . }}
+           </div>
+        </div>
+     </section>
     <section class="section container">
-        {{ partial "site-menu.html" . }}
-        {{ partial "site-header.html" . }}
         <div class="columns">
             <main class="column" role="main">
                 {{- block "main" . }}{{ end }}

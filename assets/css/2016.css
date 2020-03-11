@@ -118,7 +118,30 @@ kbd {
     color: white;
   }
 
- sharing {
+sharing {
     overflow:visible;/*width:1.25em;font-size:2em;height:1em;*/
     /*text-align:center;vertical-align: -.125em;display:inline-block;*/
- }
+}
+
+#site-nav {
+    padding-left:3em;padding-right:3em; 
+    background-color:white;
+}
+
+#site-header {
+    padding-top:2.2em;
+}
+
+.navbar-menu .navbar-item {
+    line-height: 0.5;
+}
+.navbar-dropdown>hr {
+    margin: 5px 0;
+}
+
+body > section.hero > div {
+    padding-bottom: 0;
+}
+body > section.section.container {
+    padding-top: 1em;
+}

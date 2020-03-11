@@ -1,0 +1,60 @@
+{{/* Site Navigation Menu & outer page headings */}}
+<div id="site-nav" class="topsticky">
+    {{/* Menu first so it is top on narrow windows */}}
+    <div id="topblock">
+        <nav class="navbar is-pulled-right" role="navigation" aria-label="dropdown navigation">
+            <div class="navbar-brand">
+                <div class="navbar-burger" data-target="navMenu">
+                    <span></span><span></span><span></span>
+                </div>
+            </div>
+    
+            <div id="navMenu" class="navbar-menu">
+                {{ $currentPage := . }}
+                {{/* Render menu with single sub-menu (optional) but excluding the "Posts" & "Pages" auto-menus */}}
+                {{/* range and (where .Site.Menus.main "Name" "not in" .Site.Params.menuExclude ) */}}
+                {{ range .Site.Menus.main }}
+                    {{ if .HasChildren }} {{/* If a menu has child items ... */}}
+                    <div class="navbar-item has-dropdown is-hoverable {{ if (or ($currentPage.HasMenuCurrent "main" .) ($currentPage.IsMenuCurrent "main" .)) }}has-text-weight-bold{{ end }}" aria-haspopup="true">
+                        <a href="{{.URL | default '#'}}" class="navbar-link">
+                            {{ .Pre }}
+                            <span>{{ .Name }}</span>
+                        </a>
+                        <div class="navbar-dropdown is-boxed">
+                        {{ range .Children }}
+                            {{/* Check for menu items named like "---- 1", etc and turn into HR's */}}
+                            {{if eq (substr .Name 0 5) "---- " }}
+                                <hr />
+                            {{else}}
+                                <a href="{{ .URL }}" class="navbar-item {{ if $currentPage.IsMenuCurrent "main" . }}has-text-weight-bold{{ end }}">
+                                    {{ .Name }}
+                                </a>
+                            {{end}}
+                        {{ end }}
+                        </div>
+                    </div>
+                    {{else}} {{/*Plain menu item (no children) */}}
+                    {{if eq (substr .Name 0 5) "---- " }}
+                    <hr />
+                    {{else}}
+                    <a href="{{.URL}}" class="navbar-item {{ if $currentPage.IsMenuCurrent "main" . }}has-text-weight-bold{{ end }}">
+                        {{ .Pre }}
+                        <span>{{ .Name }}</span>
+                    </a>
+                    {{end}}{{end}}
+                {{end}}
+            </div>
+        </nav>
+        <a href="/" rel="home" class="is-pulled-left">
+            <div class="title">
+                {{ $.Site.Title }}
+            </div>
+            <div class="subtitle">
+                {{ $.Site.Params.Description }}
+            </div>
+        </a>
+    </div>
+</div>
+<a href="/" rel="home">
+    <img src="/images/brimham-rocks-1200x279.jpg" class="image" title="Brimham Rocks, Yorkshire, UK" alt="Much Ado About IT" width="100%">
+</a>
