@@ -1,7 +1,7 @@
 {{ define "main" }}
 <div class="content">
 
-    <h1 title="{{.Kind}}">{{ .Title }}</h1>
+    <h1 title="{{.Kind}}">Home</h1>
 
     {{- if .Params.Description -}}
     <div class="space-below" title="Page description"><blockquote>
@@ -14,10 +14,10 @@
     {{- end -}}
 
     {{/* --- List section content for the current section --- */}}
-    {{/* --- NOTE that the home page uses home.html not this template --- */}}
+    {{/* --- NOTE that this is very similar to the list.html template but has to use .Site.RegularPages --- */}}
     <div class="articles">
-        {{/* NB: .Data.Pages auto-filters to the "current" content level */}}
-        {{- $paginator := .Paginate (where .Data.Pages.ByLastmod.Reverse "Section" "!=" "") -}}
+        {{/* NB: .Site.RegularPages auto-filters to the all standard page content */}}
+        {{- $paginator := .Paginate (where .Site.RegularPages.ByLastmod.Reverse "Section" "!=" "") -}}
         {{- range  $paginator.Pages -}}
             {{- partial "article-summary.html" . -}}
         {{- end -}}
