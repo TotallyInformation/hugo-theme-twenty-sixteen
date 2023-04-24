@@ -57,7 +57,7 @@
         <link href="{{ .OutputFormats.Get "RSS" }}" rel="alternate" type="application/rss+xml" title="{{ $.Site.Title }}" />
     {{end}}
     {{/* NOTE: These Hugo Internal Templates can be found starting at https://github.com/spf13/hugo/blob/master/tpl/tplimpl/template_embedded.go#L158 */}}
-    {{- template "_internal/opengraph.html" . -}} {{- template "_internal/google_news.html" . -}}
+    {{- template "_internal/opengraph.html" . -}} {{/* {{- template "_internal/google_news.html" . -}} */}}
     {{- template "_internal/schema.html" . -}} {{- template "_internal/twitter_cards.html" . -}}
 
     {{ range .AlternativeOutputFormats -}}
@@ -108,7 +108,7 @@
 
     <script src="{{ $js.Permalink }}" integrity="{{ $js.Data.Integrity }}" crossorigin="anonymous"></script>
 
-    {{- $e := (getenv "HUGO_ENV") | (getenv "ENVIRONMENT") | default .Site.Params.env | default "DEV" -}}
+    {{ $e := or (getenv "HUGO_ENV") (getenv "ENVIRONMENT") site.Params.env "DEV" }}
 
     {{- partial "jsonld.html" . -}}
 
