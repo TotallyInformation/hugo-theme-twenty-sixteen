@@ -8,7 +8,7 @@ description = ""
 homepage = "https://github.com/TotallyInformation/hugo-theme-twenty-sixteen"
 tags = []
 features = ["menu","disqus"]
-min_version = "0.38"
+min_version = "0.111"
 
 #sectionPagesMenu = "main"
 enableRobotsTXT = true
